@@ -42,10 +42,10 @@
 }
 
 .bubble:nth-child(4) {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     left: 50%;
-    animation-duration: 11s;
+    animation-duration: 9s;
     animation-delay: 0s;
 }
 
@@ -66,10 +66,10 @@
 }
 
 .bubble:nth-child(7) {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     left: 70%;
-    animation-duration: 12s;
+    animation-duration: 10s;
     animation-delay: 2s;
 }
 
@@ -90,10 +90,10 @@
 }
 
 .bubble:nth-child(10) {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     left: 25%;
-    animation-duration: 10s;
+    animation-duration: 9s;
     animation-delay: 4s;
 }
 

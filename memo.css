@@ -40,29 +40,24 @@ body {
 }
 .square > img {
     height: 100px;
-    width: 100px;
     margin-bottom: 10px;
 }
 .square > img.carlos {
     height: 110px;
-    width: 50px;
 }
 .square > img.pearl {
     height: 130px;
-    width: 130px;
 }
 .square > img.krabs {
     height: 120px;
-    width: 120px;
 }
 .square > img.plancton {
     height: 70px;
-    width: 70px;
 }
 .square > img.gary {
     height: 50px;
-    width: 50px;
 }
+
 .square.hidden:hover {
     animation: blinkingWin 0.5s linear infinite;
 }
