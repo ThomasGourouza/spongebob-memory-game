@@ -1,0 +1,27 @@
+.character {
+    position: absolute;
+    cursor: move;
+    z-index: 1;
+    bottom: 0;
+}
+
+#bob {
+    right: 25%;
+}
+
+#patrick {
+    left: 25%;
+}
+
+#carlos {
+    left: 50%;
+}
+
+#bob > img,
+#patrick > img {
+    height: 150px;
+}
+
+#carlos > img {
+    height: 190px;
+}

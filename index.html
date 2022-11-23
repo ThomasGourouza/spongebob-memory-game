@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponge Bob - Memo</title>
     <link rel="icon" href="images/pineapple.png">
-    <link rel="stylesheet" href="memo.css">
-    <link rel="stylesheet" href="bubble.css">
+    <link rel="stylesheet" href="styles/memo.css">
+    <link rel="stylesheet" href="styles/bubble.css">
+    <link rel="stylesheet" href="styles/move.css">
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="music/theme-song.mp3" type="audio/mpeg">
-    </audio> 
+    <!-- <audio autoplay loop>
+        <source src="songs/theme-song.mp3" type="audio/mpeg">
+    </audio>  -->
     <div class="bubbles">
         <div class="bubble"></div>
         <div class="bubble"></div>
@@ -50,6 +51,16 @@
         <div id=15 class="square hidden" onclick="showPicture(this)"></div>
         <div id=16 class="square hidden" onclick="showPicture(this)"></div>
     </div>
-    <script src="memo.js"></script>
+    <div id="carlos" class="character">
+        <img src="images/carlos.png" alt="carlos">
+    </div>
+    <div id="patrick" class="character">
+        <img src="images/patrick.png" alt="patrick">
+    </div>
+    <div id="bob" class="character">
+        <img src="images/bob.png" alt="bob">
+    </div>
+    <script src="scripts/move.js"></script>
+    <script src="scripts/memo.js"></script>
 </body>
 </html>

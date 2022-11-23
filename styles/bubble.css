@@ -13,7 +13,7 @@
     bottom: -100px;
     width: 40px;
     height: 40px;
-    background-image: url(images/bubble.png);
+    background-image: url(../images/bubble.png);
     background-size: cover;
     animation: rise 10s infinite ease-in;
 }
