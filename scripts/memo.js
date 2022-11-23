@@ -26,6 +26,7 @@ let player2 = {
     name: 'Tom',
     score: 0
 };
+let currentPlayer;
 
 /**
  * Game initialization
@@ -52,8 +53,8 @@ function initGame() {
         const randomCharacter = characters[randomInt];
         square.setAttribute('name', randomCharacter);
     });
-    player.innerHTML = nextPlayer(player1.name);
-    score.innerHTML = printScore();
+    setCurrentPlayerName(player1.name)
+    printScore();
 }
 
 /**
@@ -82,8 +83,7 @@ function showPicture(div) {
                 removeImage(firstSelectedSquare);
                 removeImage(div);
                 canPlay = true;
-                const next = isCurrentPlayer1() ? player2.name : player1.name;
-                player.innerHTML = nextPlayer(next);
+                setCurrentPlayerName(getNextPlayerName());
             }, timeToMemorize);
         }
         firstSelectedSquareId = 0;
@@ -113,8 +113,8 @@ function getRandomInt(min, max) {
 function checkEndOfGame() {
     const remainingSquares = getByClassName('hidden');
     if (remainingSquares.length === 2) {
-        const current = isCurrentPlayer1() ? player1.name : player2.name;
-        player.innerHTML = congratulatePlayer(current);
+        const winner = getWinnerName();
+        congratulatePlayer(winner);
         remainingSquares.forEach((square) => {
             setImage(square);
             square.classList.remove("hidden");
@@ -123,21 +123,27 @@ function checkEndOfGame() {
     }
 }
 function incrementScoreOfCurrentPlayer() {
-    const currentPlayer = isCurrentPlayer1() ? player1 : player2;
-    currentPlayer.score++;
-    score.innerHTML = printScore();
+    getCurrentPlayer().score++;
+    printScore();
 }
-function nextPlayer(name) {
-    return `Au tour de ${name}.`;
+function getCurrentPlayer() {
+    return (currentPlayer === player1.name) ? player1 : player2;
+}
+function getNextPlayerName() {
+    return (currentPlayer === player1.name) ? player2.name : player1.name;
+}
+function getWinnerName() {
+    return (player1.score > player2.score) ? player1.name : player2.name;
+}
+function setCurrentPlayerName(name) {
+    currentPlayer = name;
+    player.innerHTML = `Au tour de ${currentPlayer}.`;
 }
 function congratulatePlayer(name) {
-    return `Bravo ${name}!`;
+    player.innerHTML = `Bravo ${name}!`;
 }
 function printScore() {
-    return `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
-}
-function isCurrentPlayer1() {
-    return player.innerHTML === nextPlayer(player1.name);
+    score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
 }
 
 /**
