@@ -3,13 +3,15 @@
  */
  const player = getById('playerName');
  const score = getById('PlayersScore');
- 
+
 /**
  * Constants
  */
  const characters = [
     'bob', 'carlos', 'gary', 'krabs', 'patrick', 'pearl', 'plancton', 'puff', 'sandy'
 ];
+const timeToMemorize = 2000;
+const timeBeforeRevealEndGame = 500;
 
 /**
  * Variables
@@ -73,7 +75,7 @@ function showPicture(div) {
             incrementScoreOfCurrentPlayer();
             setTimeout(() => {
                 checkEndOfGame();
-            }, 500);
+            }, timeBeforeRevealEndGame);
         } else {
             canPlay = false;
             setTimeout(() => {
@@ -82,7 +84,7 @@ function showPicture(div) {
                 canPlay = true;
                 const next = isCurrentPlayer1() ? player2.name : player1.name;
                 player.innerHTML = nextPlayer(next);
-            }, 2000);
+            }, timeToMemorize);
         }
         firstSelectedSquareId = 0;
     }
