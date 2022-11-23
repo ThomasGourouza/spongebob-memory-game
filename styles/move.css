@@ -3,6 +3,11 @@
     cursor: move;
     z-index: 1;
     bottom: 0;
+    height: 190px;
+    width: 140px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 #bob {

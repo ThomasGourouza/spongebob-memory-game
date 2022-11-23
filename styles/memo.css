@@ -17,7 +17,7 @@ body {
     position: absolute;
     left: calc(calc(100% - 650px)/2);
     margin-top: -10px;
-    z-index: -10;
+    z-index: 2;
     height: 650px;
     width: 650px;
     background-color: white;
@@ -34,6 +34,7 @@ body {
     border-color: black;
     background-image: url(../images/background.png);
     background-size: cover;
+    z-index: 3;
 }
 .hidden {
     cursor: pointer;
