@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memo</title>
     <link rel="stylesheet" href="memo.css">
+    <link rel="stylesheet" href="bubble.css">
 </head>
-
 <body>
-    <div class="info"><h1 id="playerName"></h1></div>
-    <div class="info"><h2 id="PlayersScore"></h2></div>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <div class="info">
+        <h1 id="playerName"></h1>
+    </div>
+    <div class="info">
+        <h2 id="PlayersScore"></h2>
+    </div>
     <div class="board">
         <div id=1 class="square hidden" onclick="showPicture(this)"></div>
         <div id=2 class="square hidden" onclick="showPicture(this)"></div>
@@ -32,5 +47,4 @@
     </div>
     <script src="memo.js"></script>
 </body>
-
 </html>
