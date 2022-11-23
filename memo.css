@@ -1,0 +1,65 @@
+body {
+    background-image: url(images/back.png);
+    background-size: cover;
+}
+.board {
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px 150px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin-left: calc(calc(100% - 630px)/2);
+    margin-right: calc(calc(100% - 630px)/2);
+}
+.square {
+    border: 1px solid;
+    border-radius: 10%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-color: black;
+    background-image: url(images/background.png);
+    background-size: cover;
+}
+.hidden {
+    cursor: pointer;
+}
+.square > img {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+.square > img.carlos {
+    height: 110px;
+    width: 50px;
+}
+.square > img.pearl {
+    height: 130px;
+    width: 130px;
+}
+.square > img.krabs {
+    height: 120px;
+    width: 120px;
+}
+.square > img.plancton {
+    height: 70px;
+    width: 70px;
+}
+.square > img.gary {
+    height: 50px;
+    width: 50px;
+}
+.square.hidden:hover {
+    animation: blinkingWin 0.5s linear infinite;
+}
+.info {
+    text-align: center;
+}
+.alone {
+    border-color: red;
+}
+@keyframes blinkingWin {
+    0%   { border-color: black; }
+    50%  { border-color: rgb(87, 236, 247);   }
+    100% { border-color: black; }
+}
