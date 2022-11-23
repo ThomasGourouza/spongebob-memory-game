@@ -1,21 +1,40 @@
-let firstSelectedSquareId = 0;
-let canPlay = true;
-const player1 = {
-    name: 'Vika',
-    score: 0
-};
-const player2 = {
-    name: 'Tom',
-    score: 0
-};
-const player = document.getElementById('playerName');
-const score = document.getElementById('PlayersScore');
-const characters = [
+/**
+ * Document constants
+ */
+ const player = getById('playerName');
+ const score = getById('PlayersScore');
+ 
+/**
+ * Constants
+ */
+ const characters = [
     'bob', 'carlos', 'gary', 'krabs', 'patrick', 'pearl', 'plancton', 'puff', 'sandy'
 ];
 
+/**
+ * Variables
+ */
+let firstSelectedSquareId = 0;
+let canPlay = true;
+let player1 = {
+    name: 'Vika',
+    score: 0
+};
+let player2 = {
+    name: 'Tom',
+    score: 0
+};
+
+/**
+ * Game initialization
+ */
+initGame();
+
+/**
+ * Initialization function
+ */
 function initGame() {
-    const squares = [...document.getElementsByClassName('square')];
+    const squares = getByClassName('square');
     let intAlreadyChoosen = [];
     let randomInt;
 
@@ -35,13 +54,9 @@ function initGame() {
     score.innerHTML = printScore();
 }
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  
-
+/**
+ * Event function
+ */
 function showPicture(div) {
     const id = div.getAttribute('id');
     if (firstSelectedSquareId === id || !div.classList.contains('hidden') || canPlay === false) {
@@ -51,7 +66,7 @@ function showPicture(div) {
     if (firstSelectedSquareId === 0) {
         firstSelectedSquareId = id;
     } else {
-        const firstSelectedSquare = document.getElementById(firstSelectedSquareId);
+        const firstSelectedSquare = getById(firstSelectedSquareId);
         if (firstSelectedSquare.getAttribute('name') === div.getAttribute('name')) {
             firstSelectedSquare.classList.remove("hidden");
             div.classList.remove("hidden");
@@ -73,22 +88,28 @@ function showPicture(div) {
     }
 }
 
+/**
+ * Helper functions
+ */
 function setImage(div) {
     const characterName = div.getAttribute('name');
-    const img = document.createElement('img');
+    const img = createElement('img');
     img.src = `images/${characterName}.png`;
     img.alt = characterName;
     img.setAttribute('class', characterName);
     div.appendChild(img);
 }
-
 function removeImage(div) {
     const img = div.firstChild;
     div.removeChild(img);
 }
-
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 function checkEndOfGame() {
-    const remainingSquares = [...document.getElementsByClassName('hidden')];
+    const remainingSquares = getByClassName('hidden');
     if (remainingSquares.length === 2) {
         const current = isCurrentPlayer1() ? player1.name : player2.name;
         player.innerHTML = congratulatePlayer(current);
@@ -99,27 +120,33 @@ function checkEndOfGame() {
         });
     }
 }
-
 function incrementScoreOfCurrentPlayer() {
     const currentPlayer = isCurrentPlayer1() ? player1 : player2;
     currentPlayer.score++;
     score.innerHTML = printScore();
 }
-
 function nextPlayer(name) {
     return `Au tour de ${name}.`;
 }
-
 function congratulatePlayer(name) {
     return `Bravo ${name}!`;
 }
-
 function printScore() {
     return `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
 }
-
 function isCurrentPlayer1() {
     return player.innerHTML === nextPlayer(player1.name);
 }
 
-initGame();
+/**
+ * Helper Document functions
+ */
+function getById(id) {
+    return document.getElementById(id);
+}
+function getByClassName(name) {
+    return [...document.getElementsByClassName(name)];
+}
+function createElement(elmt) {
+    return document.createElement(elmt);
+}
