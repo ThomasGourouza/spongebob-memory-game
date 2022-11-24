@@ -5,13 +5,15 @@ function toggleAudio() {
     const patrick = getElement('#patrick > img');
     const carlos = getElement('#carlos > img');
     if (audio.volume === 1) {
-        bob.classList.add('dance');
-        patrick.classList.add('dance');
-        carlos.classList.add('dance');
+        [bob, patrick, carlos].forEach((img) => {
+            img.classList.add('dance');
+            img.classList.remove('sad');
+        });
     } else {
-        bob.classList.remove('dance');
-        patrick.classList.remove('dance');
-        carlos.classList.remove('dance');
+        [bob, patrick, carlos].forEach((img) => {
+            img.classList.add('sad');
+            img.classList.remove('dance');
+        });
     }
 }
 

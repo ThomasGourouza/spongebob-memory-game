@@ -11,27 +11,32 @@
 }
 
 #bob {
-    right: 10%;
+    right: 21%;
     bottom: 15px;
 }
 
 #patrick {
-    right: 20%;
+    right: 13%;
     bottom: 25px;
 }
 
 #carlos {
-    left: 20%;
-    bottom: 25px;
+    right: 5%;
+    bottom: 10px;
 }
 
-#bob > img,
-#patrick > img {
-    height: 150px;
+#bob > img.sad {
+    height: 140px;
 }
 
-#carlos > img {
-    height: 190px;
+#patrick > img.sad {
+    height: 180px;
+}
+
+#carlos > img.sad {
+    height: 200px;
+    width: 90px;
+    padding-bottom: 15px;
 }
 
 #bob > img.dance {
@@ -39,7 +44,7 @@
 }
 
 #carlos > img.dance {
-    content: url("../images/dancing/carlos-music.png");
+    animation: carlosDance 0.7s infinite;
 }
 
 #patrick > img.dance {
@@ -47,17 +52,23 @@
 }
 
 @keyframes patrickDance {
-    0% { content: url("../images/dancing/patrick-dance-left.png"); height: 170px; }
-    25% { content: url("../images/dancing/patrick-dance-middle.png"); height: 150px; }
-    50% { content: url("../images/dancing/patrick-dance-right.png"); height: 140px; }
-    75% { content: url("../images/dancing/patrick-dance-middle.png"); height: 150px; }
-    100% { content: url("../images/dancing/patrick-dance-left.png"); height: 170px; }
+    0% { content: url("../images/dancing/patrick-dance-left.png"); height: 190px; }
+    25% { content: url("../images/dancing/patrick-dance-middle.png"); height: 170px; }
+    50% { content: url("../images/dancing/patrick-dance-right.png"); height: 160px; }
+    75% { content: url("../images/dancing/patrick-dance-middle.png"); height: 170px; }
+    100% { content: url("../images/dancing/patrick-dance-left.png"); height: 190px; }
  }
 
 @keyframes bobDance {
     0% { content: url("../images/dancing/bob-dance-left.png"); height: 150px; width: 115px; }
-    25% { content: url("../images/dancing/bob-dance-middle.png"); height: 155px; width: 115px; }
-    50% { content: url("../images/dancing/bob-dance-right.png"); height: 160px; width: 115px; }
-    75% { content: url("../images/dancing/bob-dance-middle.png"); height: 155px; width: 115px; }
+    25% { content: url("../images/dancing/bob-dance-middle.png"); height: 155px; width: 117px; }
+    50% { content: url("../images/dancing/bob-dance-right.png"); height: 165px; width: 125px; }
+    75% { content: url("../images/dancing/bob-dance-middle.png"); height: 155px; width: 117px; }
     100% { content: url("../images/dancing/bob-dance-left.png"); height: 150px; width: 115px; }
+ }
+
+@keyframes carlosDance {
+    0%  { content: url("../images/dancing/carlos-dance.png"); height: 220px; }
+    50%  { content: url("../images/dancing/carlos-dance.png"); height: 230px; }
+    100%  { content: url("../images/dancing/carlos-dance.png"); height: 220px; }
  }
