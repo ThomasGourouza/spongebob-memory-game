@@ -1,6 +1,7 @@
 body {
-    background-image: url(../images/back.png);
+    background: url(../images/back.png) center fixed;
     background-size: cover;
+    background-repeat: no-repeat;
     overflow: hidden;
 }
 .board {
@@ -11,7 +12,6 @@ body {
     grid-row-gap: 10px;
     margin-left: calc(calc(100% - 630px)/2);
     margin-right: calc(calc(100% - 630px)/2);
-    margin-bottom: 100px;
 }
 
 .cover {

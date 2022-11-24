@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="styles/move.css">
 </head>
 <body>
-    <!-- <audio autoplay loop>
+    <audio autoplay loop>
         <source src="songs/theme-song.mp3" type="audio/mpeg">
-    </audio>  -->
+    </audio> 
+    <button onclick="toggleAudio()">audio</button>
     <div class="bubbles">
         <div class="bubble"></div>
         <div class="bubble"></div>
@@ -52,14 +53,15 @@
         <div id=16 class="square hidden" onclick="showPicture(this)"></div>
     </div>
     <div id="carlos" class="character">
-        <img src="images/carlos.png" alt="carlos">
+        <img src="images/sad/carlos.png" alt="carlos" class="dance">
     </div>
     <div id="patrick" class="character">
-        <img src="images/patrick.png" alt="patrick">
+        <img src="images/sad/patrick.png" alt="patrick" class="dance">
     </div>
     <div id="bob" class="character">
-        <img src="images/bob.png" alt="bob">
+        <img src="images/sad/bob.png" alt="bob" class="dance">
     </div>
+    <script src="scripts/form.js"></script>
     <script src="scripts/move.js"></script>
     <script src="scripts/memo-init.js"></script>
     <script src="scripts/memo-game.js"></script>
