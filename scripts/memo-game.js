@@ -48,8 +48,6 @@ function showPicture(div) {
   } else {
     const firstSelectedSquare = getById(firstSelectedSquareId);
     if (firstSelectedSquare.getAttribute("name") === div.getAttribute("name")) {
-      firstSelectedSquare.classList.remove("hidden");
-      div.classList.remove("hidden");
       incrementScoreOfCurrentPlayer();
       setTimeout(() => {
         checkEndOfGame();
@@ -82,10 +80,12 @@ function setImage(div) {
   img.alt = characterName;
   img.setAttribute("class", characterName);
   div.appendChild(img);
+  div.classList.remove("hidden");
 }
 function removeImage(div) {
   const img = div.firstChild;
   div.removeChild(img);
+  div.classList.add("hidden");
 }
 function checkEndOfGame() {
   const remainingSquares = getByClassName("hidden");

@@ -6,21 +6,21 @@ body {
 }
 .board {
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px;
-    grid-template-rows: 150px 150px 150px 150px;
+    grid-template-columns: 120px 120px 120px 120px;
+    grid-template-rows: 120px 120px 120px 120px;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    margin-left: calc(calc(100% - 630px)/2);
-    margin-right: calc(calc(100% - 630px)/2);
+    margin-left: calc((100% - (4 * 120px + 3 * 10px))/2);
+    margin-right: calc((100% - (4 * 100px + 3 * 10px))/2);
 }
 
 .cover {
     position: absolute;
-    left: calc(calc(100% - 650px)/2);
+    left: calc(((100% - (4 * 120px + 3 * 10px))/2) - 10px);
     margin-top: -10px;
     z-index: 2;
-    height: 650px;
-    width: 650px;
+    height: calc(((4 * 120px + 3 * 10px) + 20px));
+    width: calc(((4 * 120px + 3 * 10px) + 20px));
     background-color: white;
     opacity: 50%;
     border-radius: 5%;
@@ -41,23 +41,23 @@ body {
     cursor: pointer;
 }
 .square > img {
-    height: 100px;
+    height: 80px;
     margin-bottom: 10px;
 }
-.square > img.carlos {
-    height: 125px;
+.square > img.carlos,
+.square > img.pearl,
+.square > img.krabs
+ {
+    height: 100px;
 }
-.square > img.pearl {
-    height: 130px;
-}
-.square > img.krabs {
-    height: 120px;
+.square > img.patrick {
+    height: 90px;
 }
 .square > img.plancton {
-    height: 70px;
+    height: 60px;
 }
 .square > img.gary {
-    height: 50px;
+    height: 40px;
 }
 
 .square.hidden:hover {
