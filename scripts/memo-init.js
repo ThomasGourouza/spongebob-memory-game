@@ -37,6 +37,7 @@ function initGame() {
     intAlreadyChoosen.push(randomInt);
     const randomCharacter = characters[randomInt];
     square.setAttribute("name", randomCharacter);
+    square.classList.add("hidden");
 
     const img = createElement("img");
     img.src = `images/${randomCharacter}.png`;
