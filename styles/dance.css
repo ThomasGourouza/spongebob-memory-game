@@ -45,3 +45,7 @@
     50%  { content: url("../images/dancing/carlos-dance.png"); height: 230px; }
     100%  { content: url("../images/dancing/carlos-dance.png"); height: 220px; }
 }
+
+#audio {
+    cursor: pointer;
+}
