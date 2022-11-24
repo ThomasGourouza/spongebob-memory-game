@@ -1,26 +1,31 @@
 .character {
     position: absolute;
-    cursor: move;
-    z-index: 1;
-    bottom: 0;
-    height: 190px;
-    width: 140px;
     display: flex;
     align-items: flex-end;
-    justify-content: center;
 }
 
 #bob {
-    right: 21%;
-    bottom: 15px;
+    z-index: -10;
+    right: 15%;
+    bottom: 15%;
+
+    height: 120px;
 }
 
 #patrick {
-    right: 13%;
-    bottom: 25px;
+    z-index: -10;
+    left: 10%;
+    bottom: 20%;
+
+    height: 150px;
+    transform: rotateY(180deg);
 }
 
 #carlos {
-    right: 5%;
-    bottom: 10px;
+    z-index: -5;
+    left: 20%;
+    bottom: 3%;
+
+    height: 270px;
+    transform: rotateY(180deg);
 }
