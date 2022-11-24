@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat;
     overflow: hidden;
 }
+
 .board {
     display: grid;
     grid-template-columns: 120px 120px 120px 120px;
@@ -12,6 +13,18 @@ body {
     grid-row-gap: 10px;
     margin-left: calc((100% - (4 * 120px + 3 * 10px))/2);
     margin-right: calc((100% - (4 * 100px + 3 * 10px))/2);
+}
+
+.square {
+    border: 1px solid;
+    border-radius: 10%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-color: black;
+    background-image: url(../images/background.png);
+    background-size: cover;
+    z-index: 3;
 }
 
 .cover {
@@ -26,20 +39,6 @@ body {
     border-radius: 5%;
 }
 
-.square {
-    border: 1px solid;
-    border-radius: 10%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    border-color: black;
-    background-image: url(../images/background.png);
-    background-size: cover;
-    z-index: 3;
-}
-.hidden {
-    cursor: pointer;
-}
 .square > img {
     height: 80px;
     margin-bottom: 10px;
@@ -47,7 +46,7 @@ body {
 .square > img.carlos,
 .square > img.pearl,
 .square > img.krabs
- {
+{
     height: 100px;
 }
 .square > img.patrick {
@@ -60,17 +59,25 @@ body {
     height: 40px;
 }
 
+.square.hidden {
+    cursor: pointer;
+}
 .square.hidden:hover {
     animation: blinkingWin 0.5s linear infinite;
 }
+.hidden > img {
+    visibility: hidden;
+}
+
+@keyframes blinkingWin {
+    0%   { border-color: black; }
+    50%  { border-color: rgb(87, 236, 247);   }
+    100% { border-color: black; }
+}
+
 .info {
     text-align: center;
 }
 .alone {
     border-color: red;
-}
-@keyframes blinkingWin {
-    0%   { border-color: black; }
-    50%  { border-color: rgb(87, 236, 247);   }
-    100% { border-color: black; }
 }

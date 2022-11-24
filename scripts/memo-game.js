@@ -42,7 +42,7 @@ function showPicture(div) {
   ) {
     return;
   }
-  setImage(div);
+  div.classList.remove("hidden");
   if (firstSelectedSquareId === 0) {
     firstSelectedSquareId = id;
   } else {
@@ -55,8 +55,8 @@ function showPicture(div) {
     } else {
       canPlay = false;
       setTimeout(() => {
-        removeImage(firstSelectedSquare);
-        removeImage(div);
+        firstSelectedSquare.classList.add("hidden");
+        div.classList.add("hidden");
         canPlay = true;
         setCurrentPlayerName(getNextPlayerName());
       }, timeToMemorize);
@@ -73,27 +73,13 @@ function startGame() {
 /**
  * Helper functions
  */
-function setImage(div) {
-  const characterName = div.getAttribute("name");
-  const img = createElement("img");
-  img.src = `images/${characterName}.png`;
-  img.alt = characterName;
-  img.setAttribute("class", characterName);
-  div.appendChild(img);
-  div.classList.remove("hidden");
-}
-function removeImage(div) {
-  const img = div.firstChild;
-  div.removeChild(img);
-  div.classList.add("hidden");
-}
 function checkEndOfGame() {
   const remainingSquares = getByClassName("hidden");
   if (remainingSquares.length === 2) {
     const winner = getWinnerName();
     congratulatePlayer(winner);
     remainingSquares.forEach((square) => {
-      setImage(square);
+      square.classList.remove("hidden");
       square.classList.remove("hidden");
       square.classList.add("alone");
     });
@@ -131,7 +117,4 @@ function getById(id) {
 }
 function getByClassName(name) {
   return [...document.getElementsByClassName(name)];
-}
-function createElement(elmt) {
-  return document.createElement(elmt);
 }

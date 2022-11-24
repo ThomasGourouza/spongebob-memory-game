@@ -37,7 +37,14 @@ function initGame() {
     intAlreadyChoosen.push(randomInt);
     const randomCharacter = characters[randomInt];
     square.setAttribute("name", randomCharacter);
+
+    const img = createElement("img");
+    img.src = `images/${randomCharacter}.png`;
+    img.alt = randomCharacter;
+    img.setAttribute("class", randomCharacter);
+    square.appendChild(img);
   });
+
 }
 
 /**
@@ -54,4 +61,7 @@ function getRandomInt(min, max) {
  */
 function getByClass(name) {
   return [...document.getElementsByClassName(name)];
+}
+function createElement(elmt) {
+  return document.createElement(elmt);
 }
