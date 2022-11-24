@@ -1,6 +1,7 @@
 body {
     background-image: url(../images/back.png);
     background-size: cover;
+    overflow: hidden;
 }
 .board {
     display: grid;
