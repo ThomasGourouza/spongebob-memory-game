@@ -24,9 +24,13 @@
 }
 
 @keyframes patrickDance {
-    0% { content: url("../images/dancing/patrick-dance-1.png"); }
-    50% { content: url("../images/dancing/patrick-dance-2.png"); height: 90%; }
-    100% { content: url("../images/dancing/patrick-dance-1.png"); }
+    0% { content: url("../images/dancing/patrick-dance-2.png"); }
+    17% { content: url("../images/dancing/patrick-dance-1.png"); height: 95%; }
+    34% { content: url("../images/dancing/patrick-dance-3.png"); height: 90%; }
+    51% { content: url("../images/dancing/patrick-dance-1.png"); height: 105%;}
+    68% { content: url("../images/dancing/patrick-dance-4.png"); height: 90%; }
+    85% { content: url("../images/dancing/patrick-dance-1.png"); height: 95%; }
+    100% { content: url("../images/dancing/patrick-dance-2.png"); }
 }
 
 @keyframes bobDance {
