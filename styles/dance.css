@@ -4,30 +4,30 @@
     height: 100%;
 }
 
-#patrick > img.sad {
+#patrick.sad > img {
     transform: translateX(-11px);
 }
-#carlos > img.sad {
+#carlos.sad > img {
     transform: translateX(-55px);
 }
 
-#bob > img.dance {
+#bob.dance > img {
     content: url("../images/dancing/bob-dance.png");
     animation: bobDance 0.5s infinite;
     transform: rotateY(180deg);
 }
-#carlos > img.dance {
+#carlos.dance > img {
     animation: carlosDance 0.7s infinite;
 }
-#patrick > img.dance {
-    animation: patrickDance 1s infinite;
+#patrick.dance > img {
+    animation: patrickDance 2s infinite;
 }
 
 @keyframes patrickDance {
     0% { content: url("../images/dancing/patrick-dance-2.png"); }
     17% { content: url("../images/dancing/patrick-dance-1.png"); height: 95%; }
     34% { content: url("../images/dancing/patrick-dance-3.png"); height: 90%; }
-    51% { content: url("../images/dancing/patrick-dance-1.png"); height: 105%;}
+    51% { content: url("../images/dancing/patrick-dance-1.png"); height: 105%; }
     68% { content: url("../images/dancing/patrick-dance-4.png"); height: 90%; }
     85% { content: url("../images/dancing/patrick-dance-1.png"); height: 95%; }
     100% { content: url("../images/dancing/patrick-dance-2.png"); }
@@ -37,7 +37,7 @@
     0% { height: 105%; transform: rotate(-10deg); }
     25% { height: 110%; transform: rotate(0deg); }
     50% { height: 115%; transform: rotate(10deg); }
-    75% { height: 110%; transform: rotate(0deg);}
+    75% { height: 110%; transform: rotate(0deg); }
     100% { height: 105%; transform: rotate(-10deg);}
 }
 

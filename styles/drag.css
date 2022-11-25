@@ -1,4 +1,6 @@
-.character {
+#bob,
+#patrick,
+#carlos {
     position: absolute;
     cursor: move;
     z-index: 1;
@@ -7,20 +9,4 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-}
-
-#bob {
-    right: 21%;
-    bottom: 15px;
-    transform: rotateY(180deg);
-}
-
-#patrick {
-    right: 13%;
-    bottom: 25px;
-}
-
-#carlos {
-    right: 5%;
-    bottom: 10px;
 }

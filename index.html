@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/bubble.css">
     <!-- <link rel="stylesheet" href="styles/drag.css"> -->
     <link rel="stylesheet" href="styles/form.css">
-    <link rel="stylesheet" href="styles/move.css">
+    <link rel="stylesheet" href="styles/position.css">
     <link rel="stylesheet" href="styles/dance.css">
 </head>
 <body>
@@ -19,6 +19,8 @@
     </audio> 
     <button id="audio" onclick="toggleAudio()">Audio</button>
     <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
         <div class="bubble"></div>
         <div class="bubble"></div>
         <div class="bubble"></div>
@@ -55,18 +57,17 @@
         <div id=15 class="square" onclick="showPicture(this)"></div>
         <div id=16 class="square" onclick="showPicture(this)"></div>
     </div>
-    <div id="carlos" class="character">
-        <img src="images/sad/carlos-sad.png" alt="carlos" class="dance">
+    <div id="carlos" class="sad">
+        <img src="images/sad/carlos-sad.png" alt="carlos">
     </div>
-    <div id="patrick" class="character">
-        <img src="images/sad/patrick-sad.png" alt="patrick" class="dance">
+    <div id="patrick" class="sad">
+        <img src="images/sad/patrick-sad.png" alt="patrick">
     </div>
-    <div id="bob" class="character">
-        <img src="images/sad/bob-sad.png" alt="bob" class="dance">
+    <div id="bob" class="sad">
+        <img src="images/sad/bob-sad.png" alt="bob">
     </div>
     <script src="scripts/form.js"></script>
     <!-- <script src="scripts/drag.js"></script> -->
-    <script src="scripts/move.js"></script>
     <script src="scripts/memo-init.js"></script>
     <script src="scripts/memo-game.js"></script>
 </body>

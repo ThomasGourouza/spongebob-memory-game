@@ -1,20 +1,20 @@
+const bob = getElement('#bob');
+const patrick = getElement('#patrick');
+const carlos = getElement('#carlos');
+const audio = getElement('audio');
+
+audio.volume = 0;
+toggleAudio();
+
+/**
+ * Event function
+ */
 function toggleAudio() {
-    const audio = getElement('audio');
     audio.volume = (audio.volume === 1) ? 0 : 1;
-    const bob = getElement('#bob > img');
-    const patrick = getElement('#patrick > img');
-    const carlos = getElement('#carlos > img');
-    if (audio.volume === 1) {
-        [bob, patrick, carlos].forEach((img) => {
-            img.classList.add('dance');
-            img.classList.remove('sad');
-        });
-    } else {
-        [bob, patrick, carlos].forEach((img) => {
-            img.classList.add('sad');
-            img.classList.remove('dance');
-        });
-    }
+    [bob, patrick, carlos].forEach((character) => {
+        character.classList.add(audio.volume === 1 ? 'dance' : 'sad');
+        character.classList.remove(audio.volume === 1 ? 'sad' : 'dance');
+    });
 }
 
 /**
