@@ -7,20 +7,25 @@
 #patrick.sad > img {
     transform: translateX(-11px);
 }
+#patrick.dance > img {
+    animation: patrickDance 2s infinite;
+}
+#patrick.player > img {
+    content: url("../images/player/patrick-player.png");
+}
+
 #carlos.sad > img {
     transform: translateX(-55px);
+}
+#carlos.dance > img {
+    content: url("../images/dancing/carlos-dance.png");
+    animation: carlosDance 0.7s infinite;
 }
 
 #bob.dance > img {
     content: url("../images/dancing/bob-dance.png");
-    animation: bobDance 0.5s infinite;
+    animation: bobDance 0.8s infinite;
     transform: rotateY(180deg);
-}
-#carlos.dance > img {
-    animation: carlosDance 0.7s infinite;
-}
-#patrick.dance > img {
-    animation: patrickDance 2s infinite;
 }
 
 @keyframes patrickDance {
@@ -34,15 +39,13 @@
 }
 
 @keyframes bobDance {
-    0% { height: 105%; transform: rotate(-10deg); }
-    25% { height: 110%; transform: rotate(0deg); }
-    50% { height: 115%; transform: rotate(10deg); }
-    75% { height: 110%; transform: rotate(0deg); }
-    100% { height: 105%; transform: rotate(-10deg);}
+    0% { height: 105%; transform: rotate(-5deg); }
+    25% { height: 110%; }
+    50% { height: 115%; transform: rotate(5deg); }
+    75% { height: 110%; }
+    100% { height: 105%; transform: rotate(-5deg);}
 }
 
 @keyframes carlosDance {
-    0%  { content: url("../images/dancing/carlos-dance.png");}
-    50%  { content: url("../images/dancing/carlos-dance.png"); height: 105%; }
-    100%  { content: url("../images/dancing/carlos-dance.png"); }
+    50%  { height: 105%; }
 }

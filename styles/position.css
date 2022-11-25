@@ -46,8 +46,8 @@
 }
 
 @keyframes bobWalk {
-    25% { transform: translateX(-50px);}
-    75% { transform: translateX(50px);}
+    25% { transform: translateX(-25px);}
+    75% { transform: translateX(25px);}
 }
 
 @keyframes patrickWalk {

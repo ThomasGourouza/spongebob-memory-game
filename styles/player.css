@@ -1,0 +1,50 @@
+#jellyfish {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    z-index: -20;
+    height: 300px;
+}
+#jellyfish.notHere {
+    left: calc(100% + 500px);
+    top: calc(100% + 500px);
+}
+#jellyfish.isHere {
+    left: 15%;
+    top: 300px;
+    transition: left 2s, top 2s;
+}
+#jellyfish.toPatrick {
+    left: 5%;
+    bottom: 7%;
+    transition: left 2s, top 2s;
+}
+#jellyfish.goAway {
+    left: -500px;
+    top: -500px;
+    transition: left 2s, top 2s;
+}
+#jellyfish > img {
+    height: 100%;
+    animation: jellyfishMove 3s infinite;
+}
+
+#patrick.player {
+    left: 18%;
+    bottom: calc(100% - 400px);
+    height: 220px;
+    transition: left 1s, bottom 1s, height 1s;
+}
+#patrick.player > img {
+    animation: patrickPlayer 3s infinite;
+}
+
+@keyframes jellyfishMove {
+    0%  { width: 95%; height: 110%; }
+    50%  {  width: 110%; height: 100%; }
+    100%  { width: 95%; height: 110%; }
+}
+
+@keyframes patrickPlayer {
+    50%  { height: 110%; }
+}
