@@ -12,28 +12,29 @@
 }
 
 #bob > img.dance {
-    animation: bobDance 0.8s infinite;
+    content: url("../images/dancing/bob-dance.png");
+    animation: bobDance 0.5s infinite;
     transform: rotateY(180deg);
 }
 #carlos > img.dance {
     animation: carlosDance 0.7s infinite;
 }
 #patrick > img.dance {
-    animation: patrickDance 0.85s infinite;
+    animation: patrickDance 1s infinite;
 }
 
 @keyframes patrickDance {
-    0% { content: url("../images/dancing/patrick-dance-middle.png"); }
-    50% { content: url("../images/dancing/patrick-dance-right.png"); height: 90%; }
-    100% { content: url("../images/dancing/patrick-dance-middle.png"); }
+    0% { content: url("../images/dancing/patrick-dance-1.png"); }
+    50% { content: url("../images/dancing/patrick-dance-2.png"); height: 90%; }
+    100% { content: url("../images/dancing/patrick-dance-1.png"); }
 }
 
 @keyframes bobDance {
-    0% { content: url("../images/dancing/bob-dance-left.png"); }
-    25% { content: url("../images/dancing/bob-dance-middle.png"); height: 105%; }
-    50% { content: url("../images/dancing/bob-dance-right.png"); height: 110%; }
-    75% { content: url("../images/dancing/bob-dance-middle.png"); height: 105%; }
-    100% { content: url("../images/dancing/bob-dance-left.png"); }
+    0% { height: 105%; transform: rotate(-10deg); }
+    25% { height: 110%; transform: rotate(0deg); }
+    50% { height: 115%; transform: rotate(10deg); }
+    75% { height: 110%; transform: rotate(0deg);}
+    100% { height: 105%; transform: rotate(-10deg);}
 }
 
 @keyframes carlosDance {
