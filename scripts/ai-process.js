@@ -1,15 +1,6 @@
 const squares = getByClassName("square");
 
-function runPatrickAI(value) {
-  player2 = {
-    name: value ? "Patrick" : "Tom",
-    score: 0,
-  };
-  aiPlay = value;
-  initGame();
-}
-
-function playAiPatrick() {
+function playAi(name) {
   makeSquaresUncliquable();
   const cards = getCards();
   const index = getRandomInt(0, cards.length - 1);
@@ -35,8 +26,8 @@ function playAiPatrick() {
 
 }
 
-function setPatrickEndgame() {
-    getById('patrick').classList.add('endgame');
+function setEndgame(name) {
+    getById(name).classList.add('endgame');
 }
 
 function getCards() {

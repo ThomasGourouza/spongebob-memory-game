@@ -11,7 +11,7 @@
     right: 15%;
     bottom: 12%;
     height: 135px;
-    transition: right 1s, bottom 1s, height 1s;
+    transition: left 1s, right 1s, bottom 1s, height 1s;
 }
 
 #patrick {
@@ -23,9 +23,10 @@
 }
 
 #carlos {
+    z-index: -5;
     transform: rotateY(180deg);
-    height: 270px;
     left: 15%;
     bottom: 3%;
-    z-index: -5;
+    height: 270px;
+    transition: left 1s, bottom 1s, height 1s;
 }

@@ -15,7 +15,18 @@
     height: 180px;
     transition: left 1s, top 1s, height 1s;
 }
-
+#jellyfish.toBob {
+    left: 80%;
+    top: 75%;
+    height: 190px;
+    transition: left 1s, top 1s, height 1s;
+}
+#jellyfish.toCarlos {
+    left: 15%;
+    top: 95%;
+    height: 300px;
+    transition: left 1s, top 1s, height 1s;
+}
 #jellyfish.isHere {
     left: 15%;
     top: 300px;
@@ -33,6 +44,23 @@
     animation: jellyfishMove 3s infinite;
 }
 
+#bob.player {
+    left: 18%;
+    bottom: calc(100% - 400px);
+    height: 220px;
+}
+#bob.player > img {
+    transform: rotateY(180deg);
+    animation: patrickPlayer 3s infinite;
+}
+
+#bob.player.endgame {
+    /* height: 200px; */
+}
+#bob.player.endgame > img {
+    /* content: url("../images/player/patrick-endgame.png"); */
+}
+
 #patrick.player {
     left: 18%;
     bottom: calc(100% - 400px);
@@ -47,6 +75,22 @@
 }
 #patrick.player.endgame > img {
     content: url("../images/player/patrick-endgame.png");
+}
+
+#carlos.player {
+    left: 18%;
+    bottom: calc(100% - 400px);
+    height: 220px;
+}
+#carlos.player > img {
+    animation: patrickPlayer 3s infinite;
+}
+
+#carlos.player.endgame {
+    /* height: 200px; */
+}
+#carlos.player.endgame > img {
+    /* content: url("../images/player/patrick-endgame.png"); */
 }
 
 @keyframes jellyfishMove {

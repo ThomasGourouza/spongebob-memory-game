@@ -10,7 +10,7 @@ audio.volume = 0;
 toggleAudio();
 
 /**
- * Event function
+ * Event functions
  */
 function toggleAudio() {
   if (!buttonsAvailable) {
@@ -24,24 +24,25 @@ function toggleAudio() {
   });
 }
 
-function playPatrick(button) {
+function playAgainst(name) {
   if (jellyfish.className === "goAway" || !buttonsAvailable) {
     return;
   }
+  const aiInfo = getAIInfo(name);
   disableButtonsFor2sec();
-  button.innerHTML = toggleButtonText(button);
+  toggleButtonText(aiInfo);
   const currentState = audio.volume === 1 ? "dance" : "sad";
-  if (!patrick.classList.contains("player")) {
-    runPatrickAI(true);
-    jellyfish.className = "toPatrick";
+  if (!aiInfo.character.classList.contains("player")) {
+    aiInfo.runAI(true);
+    jellyfish.className = aiInfo.toCharacter;
     setTimeout(() => {
       jellyfish.className = "isHere";
-      patrick.classList.replace(currentState, "player");
+      aiInfo.character.classList.replace(currentState, "player");
     }, 1000);
   } else {
-    runPatrickAI(false);
-    patrick.classList.replace("player", currentState);
-    jellyfish.className = "toPatrick";
+    aiInfo.runAI(false);
+    aiInfo.character.classList.replace("player", currentState);
+    jellyfish.className = aiInfo.toCharacter;
     setTimeout(() => {
       jellyfish.className = "goAway";
     }, 1000);
@@ -51,9 +52,8 @@ function playPatrick(button) {
   }
 }
 
-function toggleButtonText(button) {
-  const playPatrickText = 'Play Patrick';
-  return (button.innerHTML === playPatrickText) ? 'Play 1 vs 1' : playPatrickText;
+function toggleButtonText(aiInfo) {
+  aiInfo.button.innerHTML = (aiInfo.button.innerHTML === aiInfo.text) ? 'Play 1 vs 1' : aiInfo.text;
 }
 
 function disableButtonsFor2sec() {
@@ -63,4 +63,25 @@ function disableButtonsFor2sec() {
     buttonsAvailable = true;
     getElements('button').forEach((button) => button.disabled = false);
   }, 2000);
+}
+
+function getAIInfo(name) {
+  switch (name) {
+    case 'bob':
+      return new AIInfo(bob, 'toBob', (value) => setAI('Bob', value), 'Play Bob', getById('playBob'));
+    case 'patrick':
+      return new AIInfo(patrick, 'toPatrick', (value) => setAI('Patrick', value), 'Play Patrick', getById('playPatrick'));
+    case 'carlos':
+      return new AIInfo(carlos, 'toCarlos', (value) => setAI('Carlos', value), 'Play Carlos', getById('playCarlos'));
+    default:
+      return undefined;
+  }
+}
+
+function setAI(name, enabled) {
+  ai.name = name.toLowerCase();
+  ai.enabled = enabled;
+  player2.name = ai.enabled ? name : "Tom";
+  player2.score = 0;
+  initGame();
 }

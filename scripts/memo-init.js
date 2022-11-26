@@ -42,7 +42,7 @@ initGame();
  * Initialization function
  */
 function initGame() {
-  getById('patrick').classList.remove('endgame');
+  removeEndGame();
   const squares = getByClassName("square");
   let intAlreadyChoosen = [];
   let randomInt;
@@ -89,3 +89,9 @@ function setCurrentPlayerName(name) {
 function printScore() {
   score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
 }
+function removeEndGame() {
+  getById('bob').classList.remove('endgame');
+  getById('patrick').classList.remove('endgame');
+  getById('carlos').classList.remove('endgame');
+}
+         

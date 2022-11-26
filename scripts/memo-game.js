@@ -7,16 +7,16 @@ const timeBeforeRevealEndGame = 500;
 /**
  * Variables
  */
-let aiPlay = false;
+let ai = new Ai(false, undefined);
 let firstSelectedSquareId = 0;
 
 /**
  * Event function
  */
 function showPicture(div) {
-  gameProcess(div, aiPlay);
+  gameProcess(div, ai);
 }
-function gameProcess(div, aiPlay) {
+function gameProcess(div, ai) {
   const id = div.getAttribute("id");
   if (
     firstSelectedSquareId === id ||
@@ -44,8 +44,8 @@ function gameProcess(div, aiPlay) {
         firstSelectedSquare.classList.add("hidden");
         div.classList.add("hidden");
         canPlay = true;
-        if (aiPlay) {
-          playAiPatrick();
+        if (ai.enabled) {
+          playAi(ai.name);
         }
       }, timeToMemorize);
     }
@@ -65,8 +65,8 @@ function checkEndOfGame() {
       square.classList.remove("hidden");
       square.classList.add("alone");
     });
-    if (aiPlay) {
-      setPatrickEndgame();
+    if (ai.enabled) {
+      setEndgame(ai.name);
     }
   }
 }

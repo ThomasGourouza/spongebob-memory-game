@@ -20,7 +20,9 @@
     </audio> 
     <button onclick="toggleAudio()">Audio</button>
     <button onclick="initGame()">New Game</button>
-    <button onclick="playPatrick(this)">Play Patrick</button>
+    <!-- <button id="playBob" onclick="playAgainst('bob')">Play Bob</button> -->
+    <button id="playPatrick" onclick="playAgainst('patrick')">Play Patrick</button>
+    <!-- <button id="playCarlos" onclick="playAgainst('carlos')">Play Carlos</button> -->
     <div class="bubbles">
         <div class="bubble"></div>
         <div class="bubble"></div>
@@ -74,10 +76,12 @@
     </div>
     <script src="scripts/helper.js"></script>
     <!-- <script src="scripts/drag.js"></script> -->
+    <script src="scripts/card.js"></script>
+    <script src="scripts/ai.js"></script>
     <script src="scripts/memo-init.js"></script>
     <script src="scripts/memo-game.js"></script>
-    <script src="scripts/card.js"></script>
-    <script src="scripts/patrick-ai.js"></script>
+    <script src="scripts/ai-info.js"></script>
+    <script src="scripts/ai-process.js"></script>
     <script src="scripts/form.js"></script>
 </body>
 </html>

@@ -27,8 +27,11 @@
 }
 
 #bob.dance > img {
+    transform: rotateY(180deg);
     content: url("../images/dancing/bob-dance.png");
     animation: bobDance 0.8s infinite;
+}
+#bob.dance {
     transform: rotateY(180deg);
 }
 
