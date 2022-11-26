@@ -21,7 +21,7 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    border-color: black;
+    border-color: gray;
     background-image: url(../images/background.png);
     background-size: cover;
     z-index: 3;
@@ -31,7 +31,7 @@ body {
     position: absolute;
     left: calc(((100% - (4 * 120px + 3 * 10px))/2) - 10px);
     margin-top: -10px;
-    z-index: 2;
+    z-index: -2;
     height: calc(((4 * 120px + 3 * 10px) + 20px));
     width: calc(((4 * 120px + 3 * 10px) + 20px));
     background-color: white;
@@ -70,9 +70,9 @@ body {
 }
 
 @keyframes blinkingWin {
-    0%   { border-color: black; }
-    50%  { border-color: rgb(87, 236, 247);   }
-    100% { border-color: black; }
+    0%   { border-color: gray; }
+    50%  { border-color: white;   }
+    100% { border-color: gray; }
 }
 
 .info {
@@ -80,4 +80,10 @@ body {
 }
 .alone {
     border-color: red;
+}
+.player1 {
+    border-color: yellow;
+}
+.player2 {
+    border-color: aqua;
 }

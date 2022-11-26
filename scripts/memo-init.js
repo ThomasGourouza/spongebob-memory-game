@@ -1,4 +1,24 @@
 /**
+ * Document constants
+ */
+const player = getById("playerName");
+const score = getById("PlayersScore");
+
+/**
+ * Variables
+ */
+let canPlay = false;
+let player1 = {
+  name: "Vika",
+  score: 0,
+};
+let player2 = {
+  name: "Tom",
+  score: 0,
+};
+let currentPlayer;
+
+/**
  * Constants
  */
 const characters = [
@@ -22,7 +42,7 @@ initGame();
  * Initialization function
  */
 function initGame() {
-  const squares = getByClass("square");
+  const squares = getByClassName("square");
   let intAlreadyChoosen = [];
   let randomInt;
 
@@ -38,31 +58,33 @@ function initGame() {
     const randomCharacter = characters[randomInt];
     square.setAttribute("name", randomCharacter);
     square.classList.add("hidden");
+    square.classList.remove("alone");
+    square.classList.remove("player1");
+    square.classList.remove("player2");
 
     const img = createElement("img");
     img.src = `images/${randomCharacter}.png`;
     img.alt = randomCharacter;
     img.setAttribute("class", randomCharacter);
+    if (square.firstChild) {
+      square.removeChild(square.firstChild);
+    }
     square.appendChild(img);
   });
-
+  canPlay = true;
+  player1.score = 0;
+  player2.score = 0;
+  setCurrentPlayerName(player1.name);
+  printScore();
 }
 
 /**
  * Helper functions
  */
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function setCurrentPlayerName(name) {
+  currentPlayer = name;
+  player.innerHTML = `Au tour de ${currentPlayer}.`;
 }
-
-/**
- * Helper Document functions
- */
-function getByClass(name) {
-  return [...document.getElementsByClassName(name)];
-}
-function createElement(elmt) {
-  return document.createElement(elmt);
+function printScore() {
+  score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
 }

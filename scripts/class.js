@@ -15,6 +15,6 @@ class Player {
   }
 }
 
-const player = new Player('test', 0, 0, true);
+const player = new Player("test", 0, 0, true);
 
 console.log(player.status); // It's your turn

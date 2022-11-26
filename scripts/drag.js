@@ -1,7 +1,7 @@
 // Make the DIV element draggable:
-dragElement(document.getElementById("bob"));
-dragElement(document.getElementById("patrick"));
-dragElement(document.getElementById("carlos"));
+dragElement(getById("bob"));
+dragElement(getById("patrick"));
+dragElement(getById("carlos"));
 
 function dragElement(elmnt) {
   let pos1 = 0,

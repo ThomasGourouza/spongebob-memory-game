@@ -19,7 +19,8 @@
         <source src="songs/theme-song.mp3" type="audio/mpeg">
     </audio> 
     <button onclick="toggleAudio()">Audio</button>
-    <button onclick="playPatrick()">Patrick</button>
+    <button onclick="initGame()">New Game</button>
+    <button onclick="playPatrick(this)">Play Patrick</button>
     <div class="bubbles">
         <div class="bubble"></div>
         <div class="bubble"></div>
@@ -71,9 +72,12 @@
     <div id="bob" class="sad">
         <img src="images/sad/bob-sad.png" alt="bob">
     </div>
-    <script src="scripts/form.js"></script>
+    <script src="scripts/helper.js"></script>
     <!-- <script src="scripts/drag.js"></script> -->
     <script src="scripts/memo-init.js"></script>
     <script src="scripts/memo-game.js"></script>
+    <script src="scripts/card.js"></script>
+    <script src="scripts/patrick-ai.js"></script>
+    <script src="scripts/form.js"></script>
 </body>
 </html>

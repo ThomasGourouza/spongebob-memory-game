@@ -12,7 +12,7 @@
 #jellyfish.toPatrickSad {
     left: 5%;
     top: calc(100% - 300px);
-    height: 200px;
+    height: 180px;
     transition: left 1s, top 1s, height 1s;
 }
 
