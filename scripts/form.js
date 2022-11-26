@@ -4,6 +4,8 @@ const carlos = getElement('#carlos');
 const jellyfish = getElement('#jellyfish');
 const audio = getElement('audio');
 
+let toggleAudioPossible = true;
+
 audio.volume = 0;
 toggleAudio();
 
@@ -11,6 +13,9 @@ toggleAudio();
  * Event function
  */
 function toggleAudio() {
+    if (!toggleAudioPossible) {
+        return;
+    }
     audio.volume = (audio.volume === 1) ? 0 : 1;
     [bob, patrick, carlos].forEach((character) => {
         (audio.volume === 1)
@@ -19,20 +24,26 @@ function toggleAudio() {
     });
 }
 function playPatrick() {
+    toggleAudioPossible = false;
     if (jellyfish.className === 'goAway') {
+        toggleAudioPossible = true;
         return;
     }
     const currentState = (audio.volume === 1) ? 'dance' : 'sad';
-    if (patrick.classList.contains('player')) {
+    const toPatrick = (audio.volume === 1) ? 'toPatrickDance' : 'toPatrickSad';
+    if (!patrick.classList.contains('player')) {
+        jellyfish.className = toPatrick;
+        setTimeout(() => {
+            jellyfish.className = 'isHere';
+            patrick.classList.replace(currentState, 'player');
+            toggleAudioPossible = true;
+        }, 1000);
+    } else {
         patrick.classList.replace('player', currentState);
         jellyfish.className = 'goAway';
         setTimeout(() => {
             jellyfish.className = 'notHere';
-        }, 2000);
-    } else {
-        jellyfish.className = 'isHere';
-        setTimeout(() => {
-            patrick.classList.replace(currentState, 'player');
+            toggleAudioPossible = true;
         }, 1000);
     }
 }
