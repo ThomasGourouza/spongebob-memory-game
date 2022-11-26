@@ -65,6 +65,9 @@ function checkEndOfGame() {
       square.classList.remove("hidden");
       square.classList.add("alone");
     });
+    if (aiPlay) {
+      setPatrickEndgame();
+    }
   }
 }
 function setColorOnSquares(firstSelectedSquare, div) {

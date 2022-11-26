@@ -42,6 +42,7 @@ initGame();
  * Initialization function
  */
 function initGame() {
+  getById('patrick').classList.remove('endgame');
   const squares = getByClassName("square");
   let intAlreadyChoosen = [];
   let randomInt;

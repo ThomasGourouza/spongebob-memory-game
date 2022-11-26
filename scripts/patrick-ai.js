@@ -35,6 +35,10 @@ function playAiPatrick() {
 
 }
 
+function setPatrickEndgame() {
+    getById('patrick').classList.add('endgame');
+}
+
 function getCards() {
   return squares
     .filter((square) => square.classList.contains("hidden"))

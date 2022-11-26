@@ -42,11 +42,18 @@
 #patrick.player {
     left: 18%;
     bottom: calc(100% - 400px);
-    height: 220px;
+    height: 250px;
     transition: left 2s, bottom 2s, height 2s;
 }
 #patrick.player > img {
     animation: patrickPlayer 3s infinite;
+}
+
+#patrick.player.endgame {
+    height: 220px;
+}
+#patrick.player.endgame > img {
+    content: url("../images/player/patrick-endgame.png");
 }
 
 @keyframes jellyfishMove {
