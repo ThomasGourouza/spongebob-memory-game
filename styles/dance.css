@@ -6,9 +6,13 @@
 
 #patrick.sad > img {
     transform: translateX(-11px);
+    height: 110%;
 }
 #patrick.dance > img {
-    animation: patrickDance 2s infinite;
+    animation: patrickDance 0.5s infinite;
+}
+#patrick.dance {
+    animation: patrickDanceSmooth 0.8s infinite;
 }
 #patrick.player > img {
     content: url("../images/player/patrick-player.png");
@@ -30,12 +34,11 @@
 
 @keyframes patrickDance {
     0% { content: url("../images/dancing/patrick-dance-2.png"); }
-    17% { content: url("../images/dancing/patrick-dance-1.png"); height: 95%; }
-    34% { content: url("../images/dancing/patrick-dance-3.png"); height: 90%; }
-    51% { content: url("../images/dancing/patrick-dance-1.png"); height: 105%; }
-    68% { content: url("../images/dancing/patrick-dance-4.png"); height: 90%; }
-    85% { content: url("../images/dancing/patrick-dance-1.png"); height: 95%; }
+    50% { content: url("../images/dancing/patrick-dance-1.png"); }
     100% { content: url("../images/dancing/patrick-dance-2.png"); }
+}
+@keyframes patrickDanceSmooth {
+    50% { height: 165px; }
 }
 
 @keyframes bobDance {

@@ -7,34 +7,19 @@
     z-index: -10;
 }
 
-#bob.sad {
+#bob {
     right: 15%;
-    bottom: 15%;
-    height: 125px;
+    bottom: 12%;
+    height: 135px;
     transition: right 1s, bottom 1s, height 1s;
-}
-#bob.dance {
-    right: 10%;
-    bottom: 3%;
-    height: 190px;
-    animation: bobWalk 2s infinite;
-    transition: right 4s, bottom 4s, height 4s;
 }
 
 #patrick {
     transform: rotateY(180deg);
-}
-#patrick.sad {
     left: 10%;
     bottom: 20%;
     height: 155px;
     transition: left 1s, bottom 1s, height 1s;
-}
-#patrick.dance {
-    left: 5%;
-    bottom: 7%;
-    height: 220px;
-    transition: left 4s, bottom 4s, height 4s;
 }
 
 #carlos {
@@ -43,14 +28,4 @@
     left: 15%;
     bottom: 3%;
     z-index: -5;
-}
-
-@keyframes bobWalk {
-    25% { transform: translateX(-25px);}
-    75% { transform: translateX(25px);}
-}
-
-@keyframes patrickWalk {
-    50% { transform: translateX(-50px);}
-    75% { transform: translateX(50px);}
 }

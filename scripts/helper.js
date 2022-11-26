@@ -1,8 +1,8 @@
 /**
  * Helper Document functions
  */
-function getElements(elmt) {
-  return document.querySelector(elmt);
+function getElements(tag) {
+  return [...document.getElementsByTagName(tag)];
 }
 
 function getById(id) {

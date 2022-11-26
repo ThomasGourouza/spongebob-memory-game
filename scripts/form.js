@@ -1,10 +1,10 @@
-const bob = getElements("#bob");
-const patrick = getElements("#patrick");
-const carlos = getElements("#carlos");
-const jellyfish = getElements("#jellyfish");
-const audio = getElements("audio");
+const bob = getById("bob");
+const patrick = getById("patrick");
+const carlos = getById("carlos");
+const jellyfish = getById("jellyfish");
+const audio = getElements("audio")[0];
 
-let toggleAudioPossible = true;
+let buttonsAvailable = true;
 
 audio.volume = 0;
 toggleAudio();
@@ -13,7 +13,7 @@ toggleAudio();
  * Event function
  */
 function toggleAudio() {
-  if (!toggleAudioPossible) {
+  if (!buttonsAvailable) {
     return;
   }
   audio.volume = audio.volume === 1 ? 0 : 1;
@@ -23,35 +23,44 @@ function toggleAudio() {
       : character.classList.replace("dance", "sad");
   });
 }
+
 function playPatrick(button) {
-  button.innerHTML = toggleButtonText(button);
-  toggleAudioPossible = false;
-  if (jellyfish.className === "goAway") {
-    toggleAudioPossible = true;
+  if (jellyfish.className === "goAway" || !buttonsAvailable) {
     return;
   }
+  disableButtonsFor2sec();
+  button.innerHTML = toggleButtonText(button);
   const currentState = audio.volume === 1 ? "dance" : "sad";
-  const toPatrick = audio.volume === 1 ? "toPatrickDance" : "toPatrickSad";
   if (!patrick.classList.contains("player")) {
     runPatrickAI(true);
-    jellyfish.className = toPatrick;
+    jellyfish.className = "toPatrick";
     setTimeout(() => {
       jellyfish.className = "isHere";
       patrick.classList.replace(currentState, "player");
-      toggleAudioPossible = true;
     }, 1000);
   } else {
     runPatrickAI(false);
     patrick.classList.replace("player", currentState);
-    jellyfish.className = "goAway";
+    jellyfish.className = "toPatrick";
+    setTimeout(() => {
+      jellyfish.className = "goAway";
+    }, 1000);
     setTimeout(() => {
       jellyfish.className = "notHere";
-      toggleAudioPossible = true;
-    }, 1000);
+    }, 2000);
   }
 }
 
 function toggleButtonText(button) {
   const playPatrickText = 'Play Patrick';
   return (button.innerHTML === playPatrickText) ? 'Play 1 vs 1' : playPatrickText;
+}
+
+function disableButtonsFor2sec() {
+  buttonsAvailable = false;
+  getElements('button').forEach((button) => button.disabled = true);
+  setTimeout(() => {
+    buttonsAvailable = true;
+    getElements('button').forEach((button) => button.disabled = false);
+  }, 2000);
 }
