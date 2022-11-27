@@ -38,15 +38,3 @@ function getCards() {
         new Card(square.getAttribute("id"), square.getAttribute("name"))
     );
 }
-
-function makeSquaresUncliquable() {
-  getByClassName("square").forEach((square) => {
-    square.style.zIndex = -1;
-  });
-}
-
-function makeSquaresCliquable() {
-  getByClassName("square").forEach((square) => {
-    square.style.zIndex = 3;
-  });
-}

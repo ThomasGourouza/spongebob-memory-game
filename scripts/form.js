@@ -20,19 +20,11 @@ function toggleAudio() {
 }
 
 function playAgainst(name) {
-  const buttonId = getButtonId(name);
-  const isAIPlaying = getById(buttonId).innerHTML.includes("Quit");
-  const otherPlayButtons = getByName("play").filter(
-    (button) => button.getAttribute("id") !== buttonId
-  );
-  otherPlayButtons.forEach((button) => (button.disabled = !isAIPlaying));
-
   if (jellyfish.className === "goAway") {
     return;
   }
   const aiInfo = getAIInfo(name);
-  disableButtonsFor2sec();
-  toggleButtonText(aiInfo);
+  toggleButtons(name, aiInfo);
   const currentState = audio.volume === 1 ? "dance" : "sad";
   if (!aiInfo.character.classList.contains("player")) {
     aiInfo.runAI(true);
@@ -68,13 +60,30 @@ function playAgainst(name) {
   }
 }
 
-function toggleButtonText(aiInfo) {
+function toggleButtons(name, aiInfo) {
+  const buttonId = getButtonId(name);
+  const currentButton = getById(buttonId);
+  const isAIPlaying = currentButton.innerHTML.includes("Quit");
+  if (!isAIPlaying) {
+    // désactive tout 2sec puis remet seulement le joueur courant
+    getByName("play")
+      .filter((button) => button.getAttribute("id") !== buttonId)
+      .forEach((button) => (button.disabled = !isAIPlaying));
+    disableButtonsFor2sec([currentButton]);
+  } else {
+    // désactive tout 2sec puis remet tout
+    const playButtons = getByName("play");
+    disableButtonsFor2sec(playButtons);
+  }
+  // désactive les controls pendant 2sec
+  const controlButtons = getByName("control");
+  disableButtonsFor2sec(controlButtons);
+  // toggle le texte du button
   aiInfo.button.innerHTML =
     aiInfo.button.innerHTML === aiInfo.text ? "Quit" : aiInfo.text;
 }
 
-function disableButtonsFor2sec() {
-  const buttons = getByName("control");
+function disableButtonsFor2sec(buttons) {
   buttons.forEach((button) => (button.disabled = true));
   setTimeout(() => {
     buttons.forEach((button) => (button.disabled = false));

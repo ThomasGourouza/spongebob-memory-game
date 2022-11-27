@@ -17,6 +17,7 @@ let player2 = {
   score: 0,
 };
 let currentPlayer;
+let firstSelectedSquareId = 0;
 
 /**
  * Constants
@@ -43,6 +44,7 @@ initGame();
  */
 function initGame() {
   removeEndGame();
+  firstSelectedSquareId = 0;
   const squares = getByClassName("square");
   let intAlreadyChoosen = [];
   let randomInt;

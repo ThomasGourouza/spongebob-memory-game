@@ -8,7 +8,6 @@ const timeBeforeRevealEndGame = 500;
  * Variables
  */
 let ai = new Ai(false, undefined);
-let firstSelectedSquareId = 0;
 
 /**
  * Event function
@@ -39,6 +38,7 @@ function gameProcess(div, ai) {
       }, timeBeforeRevealEndGame);
     } else {
       canPlay = false;
+      makeSquaresUncliquable();
       setTimeout(() => {
         setCurrentPlayerName(getNextPlayerName());
         firstSelectedSquare.classList.add("hidden");
@@ -47,6 +47,7 @@ function gameProcess(div, ai) {
         if (ai.enabled) {
           playAi(ai.name);
         }
+        makeSquaresCliquable();
       }, timeToMemorize);
     }
   }
@@ -93,4 +94,14 @@ function getWinnerName() {
 
 function congratulatePlayer(name) {
   player.innerHTML = `Bravo ${name}!`;
+}
+function makeSquaresUncliquable() {
+  getByClassName("square").forEach((square) => {
+    square.style.zIndex = -1;
+  });
+}
+function makeSquaresCliquable() {
+  getByClassName("square").forEach((square) => {
+    square.style.zIndex = 3;
+  });
 }
