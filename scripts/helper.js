@@ -5,6 +5,10 @@ function getElements(tag) {
   return [...document.getElementsByTagName(tag)];
 }
 
+function getByName(name) {
+  return [...document.getElementsByName(name)];
+}
+
 function getById(id) {
   return document.getElementById(id);
 }

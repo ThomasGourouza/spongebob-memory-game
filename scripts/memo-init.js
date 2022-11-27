@@ -90,8 +90,14 @@ function printScore() {
   score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
 }
 function removeEndGame() {
-  getById('bob').classList.remove('endgame');
-  getById('patrick').classList.remove('endgame');
-  getById('carlos').classList.remove('endgame');
+  const bob = getById('bob');
+  const patrick = getById('patrick');
+  const carlos = getById('carlos');
+  bob.classList.remove('lost');
+  bob.classList.remove('win');
+  patrick.classList.remove('lost');
+  patrick.classList.remove('win');
+  carlos.classList.remove('lost');
+  carlos.classList.remove('win');
 }
          

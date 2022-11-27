@@ -27,7 +27,7 @@ function playAi(name) {
 }
 
 function setEndgame(name) {
-    getById(name).classList.add('endgame');
+    getById(name).classList.add('lost');
 }
 
 function getCards() {

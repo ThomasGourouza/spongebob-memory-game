@@ -4,8 +4,6 @@ const carlos = getById("carlos");
 const jellyfish = getById("jellyfish");
 const audio = getElements("audio")[0];
 
-let buttonsAvailable = true;
-
 audio.volume = 0;
 toggleAudio();
 
@@ -13,9 +11,6 @@ toggleAudio();
  * Event functions
  */
 function toggleAudio() {
-  if (!buttonsAvailable) {
-    return;
-  }
   audio.volume = audio.volume === 1 ? 0 : 1;
   [bob, patrick, carlos].forEach((character) => {
     audio.volume === 1
@@ -25,7 +20,14 @@ function toggleAudio() {
 }
 
 function playAgainst(name) {
-  if (jellyfish.className === "goAway" || !buttonsAvailable) {
+  const buttonId = getButtonId(name);
+  const isAIPlaying = getById(buttonId).innerHTML.includes("Quit");
+  const otherPlayButtons = getByName("play").filter(
+    (button) => button.getAttribute("id") !== buttonId
+  );
+  otherPlayButtons.forEach((button) => (button.disabled = !isAIPlaying));
+
+  if (jellyfish.className === "goAway") {
     return;
   }
   const aiInfo = getAIInfo(name);
@@ -37,15 +39,29 @@ function playAgainst(name) {
     jellyfish.className = aiInfo.toCharacter;
     setTimeout(() => {
       jellyfish.className = "isHere";
+      if (name === "bob") {
+        jellyfish.classList.add("withBob");
+        bob.classList.add("invisible");
+      }
       aiInfo.character.classList.replace(currentState, "player");
     }, 1000);
   } else {
     aiInfo.runAI(false);
-    aiInfo.character.classList.replace("player", currentState);
-    jellyfish.className = aiInfo.toCharacter;
-    setTimeout(() => {
-      jellyfish.className = "goAway";
-    }, 1000);
+    if (name === "bob") {
+      jellyfish.className = "goAwayRight";
+      jellyfish.classList.add("withBob");
+      bob.classList.replace("player", "notHere");
+      setTimeout(() => {
+        bob.classList.replace("notHere", currentState);
+      }, 1000);
+    } else {
+      aiInfo.character.classList.replace("player", currentState);
+      jellyfish.className = aiInfo.toCharacter;
+      setTimeout(() => {
+        jellyfish.className = "goAway";
+      }, 1000);
+    }
+
     setTimeout(() => {
       jellyfish.className = "notHere";
     }, 2000);
@@ -53,26 +69,57 @@ function playAgainst(name) {
 }
 
 function toggleButtonText(aiInfo) {
-  aiInfo.button.innerHTML = (aiInfo.button.innerHTML === aiInfo.text) ? 'Play 1 vs 1' : aiInfo.text;
+  aiInfo.button.innerHTML =
+    aiInfo.button.innerHTML === aiInfo.text ? "Quit" : aiInfo.text;
 }
 
 function disableButtonsFor2sec() {
-  buttonsAvailable = false;
-  getElements('button').forEach((button) => button.disabled = true);
+  const buttons = getByName("control");
+  buttons.forEach((button) => (button.disabled = true));
   setTimeout(() => {
-    buttonsAvailable = true;
-    getElements('button').forEach((button) => button.disabled = false);
+    buttons.forEach((button) => (button.disabled = false));
   }, 2000);
 }
 
 function getAIInfo(name) {
   switch (name) {
-    case 'bob':
-      return new AIInfo(bob, 'toBob', (value) => setAI('Bob', value), 'Play Bob', getById('playBob'));
-    case 'patrick':
-      return new AIInfo(patrick, 'toPatrick', (value) => setAI('Patrick', value), 'Play Patrick', getById('playPatrick'));
-    case 'carlos':
-      return new AIInfo(carlos, 'toCarlos', (value) => setAI('Carlos', value), 'Play Carlos', getById('playCarlos'));
+    case "bob":
+      return new AIInfo(
+        bob,
+        "toBob",
+        (value) => setAI("Bob", value),
+        "Play Bob",
+        getById("playBob")
+      );
+    case "patrick":
+      return new AIInfo(
+        patrick,
+        "toPatrick",
+        (value) => setAI("Patrick", value),
+        "Play Patrick",
+        getById("playPatrick")
+      );
+    case "carlos":
+      return new AIInfo(
+        carlos,
+        "toCarlos",
+        (value) => setAI("Carlos", value),
+        "Play Carlos",
+        getById("playCarlos")
+      );
+    default:
+      return undefined;
+  }
+}
+
+function getButtonId(name) {
+  switch (name) {
+    case "bob":
+      return "playBob";
+    case "patrick":
+      return "playPatrick";
+    case "carlos":
+      return "playCarlos";
     default:
       return undefined;
   }
