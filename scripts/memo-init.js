@@ -90,7 +90,7 @@ function checkNameEmpty() {
 
 function setCurrentPlayerName(name) {
   currentPlayer = name;
-  player.innerHTML = `Waiting for ${currentPlayer} to play.`;
+  player.innerHTML = `${currentPlayer} is playing.`;
 }
 function printScore() {
   score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
