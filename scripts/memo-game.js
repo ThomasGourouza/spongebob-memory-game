@@ -88,7 +88,7 @@ function getWinnerName() {
 }
 
 function congratulatePlayer(name) {
-  player.innerHTML = `Bravo ${name}!`;
+  player.innerHTML = `Congratulations ${name}!`;
 }
 function makeSquaresUncliquable() {
   getByClassName("square").forEach((square) => {
