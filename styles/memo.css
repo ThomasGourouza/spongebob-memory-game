@@ -110,7 +110,7 @@ body {
     margin-top: 10px;
     text-align: center;
 
-    width: 25%;
+    width: calc(25% - 20px);
     background-color: white;
     opacity: 50%;
     margin-top: 10px;
