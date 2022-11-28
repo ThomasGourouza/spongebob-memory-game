@@ -11,7 +11,7 @@
 }
 #jellyfish.toPatrick {
     left: 10%;
-    top: calc(100% - 200px);
+    top: 72%;
     height: 180px;
     transition: left 1s, top 1s, height 1s;
 }
