@@ -10,8 +10,8 @@
     height: 500px;
 }
 #jellyfish.toPatrick {
-    left: 9%;
-    top: calc(100% - 250px);
+    left: 10%;
+    top: calc(100% - 200px);
     height: 180px;
     transition: left 1s, top 1s, height 1s;
 }
