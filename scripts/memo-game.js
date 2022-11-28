@@ -17,43 +17,45 @@ function gameProcess(div, ai) {
     !div.classList.contains("hidden") ||
     canPlay === false
   ) {
-    return;
+    return false;
   }
   div.classList.remove("hidden");
   if (firstSelectedSquareId === 0) {
     firstSelectedSquareId = id;
-  } else {
-    const firstSelectedSquare = getById(firstSelectedSquareId);
-    firstSelectedSquareId = 0;
-    if (firstSelectedSquare.getAttribute("name") === div.getAttribute("name")) {
-      incrementScoreOfCurrentPlayer();
-      setColorOnSquares(firstSelectedSquare, div);
-      setTimeout(() => {
-        checkEndOfGame();
-      }, timeBeforeRevealEndGame);
-    } else {
-      canPlay = false;
-      makeSquaresUncliquable();
-      setTimeout(() => {
-        setCurrentPlayerName(getNextPlayerName());
-        firstSelectedSquare.classList.add("hidden");
-        div.classList.add("hidden");
-        canPlay = true;
-        if (ai.enabled) {
-          playAi(ai.name);
-        }
-        makeSquaresCliquable();
-      }, timeToMemorize);
-    }
+    return false;
   }
+  const firstSelectedSquare = getById(firstSelectedSquareId);
+  firstSelectedSquareId = 0;
+  if (firstSelectedSquare.getAttribute("name") === div.getAttribute("name")) {
+    incrementScoreOfCurrentPlayer();
+    setColorOnSquares(firstSelectedSquare, div);
+    const remainingSquares = getByClassName("hidden");
+    if (remainingSquares.length === 2) {
+      endOfGame(remainingSquares);
+    }
+    return remainingSquares.length > 2;
+  }
+  canPlay = false;
+  makeSquaresUncliquable();
+  setTimeout(() => {
+    setCurrentPlayerName(getNextPlayerName());
+    firstSelectedSquare.classList.add("hidden");
+    div.classList.add("hidden");
+    canPlay = true;
+    if (ai.enabled) {
+      playAi(ai.name);
+    } else {
+      makeSquaresCliquable();
+    }
+  }, timeToMemorize);
+  return false;
 }
 
 /**
  * Helper functions
  */
-function checkEndOfGame() {
-  const remainingSquares = getByClassName("hidden");
-  if (remainingSquares.length === 2) {
+function endOfGame(remainingSquares) {
+  setTimeout(() => {
     const winner = getWinnerName();
     congratulatePlayer(winner);
     remainingSquares.forEach((square) => {
@@ -64,7 +66,7 @@ function checkEndOfGame() {
     if (ai.enabled) {
       setEndgame(ai.name);
     }
-  }
+  }, timeBeforeRevealEndGame);
 }
 function setColorOnSquares(firstSelectedSquare, div) {
   firstSelectedSquare.classList.add(getPlayerClass());
@@ -89,14 +91,4 @@ function getWinnerName() {
 
 function congratulatePlayer(name) {
   player.innerHTML = `Congratulations ${name}!`;
-}
-function makeSquaresUncliquable() {
-  getByClassName("square").forEach((square) => {
-    square.style.zIndex = -1;
-  });
-}
-function makeSquaresCliquable() {
-  getByClassName("square").forEach((square) => {
-    square.style.zIndex = 3;
-  });
 }

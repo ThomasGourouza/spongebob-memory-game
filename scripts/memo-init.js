@@ -9,9 +9,9 @@ const score = getById("PlayersScore");
  */
 const player1Name = (getById("player1").value = "Vika");
 const player2Name = (getById("player2").value = "Tom");
-const player1 = new Player(player1Name, 0);
-const player2 = new Player(player2Name, 0);
-const ai = new Ai(false, undefined);
+const player1 = new Player(player1Name);
+const player2 = new Player(player2Name);
+const ai = new Ai();
 const characters = [
   "bob",
   "carlos",
@@ -40,6 +40,7 @@ initGame();
  * Initialization function
  */
 function initGame() {
+  makeSquaresCliquable();
   checkNameEmpty();
   removeEndGame();
   firstSelectedSquareId = 0;
@@ -66,7 +67,7 @@ function initGame() {
     const img = createElement("img");
     img.src = `images/${randomCharacter}.png`;
     img.alt = randomCharacter;
-    img.setAttribute("class", randomCharacter);
+    img.className = randomCharacter;
     if (square.firstChild) {
       square.removeChild(square.firstChild);
     }
@@ -105,4 +106,14 @@ function removeEndGame() {
   patrick.classList.remove("win");
   carlos.classList.remove("lost");
   carlos.classList.remove("win");
+}
+function makeSquaresUncliquable() {
+  getByClassName("square").forEach((square) => {
+    square.style.zIndex = -1;
+  });
+}
+function makeSquaresCliquable() {
+  getByClassName("square").forEach((square) => {
+    square.style.zIndex = 3;
+  });
 }
