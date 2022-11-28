@@ -1,6 +1,7 @@
 const squares = getByClassName("square");
 
 function playAi(name) {
+  // TODO: make Bob and Carlos AI
   makeSquaresUncliquable();
   const cards = getCards();
   const index = getRandomInt(0, cards.length - 1);

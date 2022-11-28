@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     align-items: flex-end;
-    z-index: -20;
+    z-index: -6;
 }
 #jellyfish.notHere {
     left: 150%;
@@ -26,12 +26,14 @@
     top: 82%;
     height: 300px;
     transition: left 1s, top 1s, height 1s;
+    z-index: -5;
 }
 #jellyfish.isHere {
     left: 14%;
     top: 310px;
     height: 300px;
     transition: left 1s, top 1s, height 1s;
+    z-index: -5;
 }
 #jellyfish.isHere.withBob {
     animation: withBob 0.7s normal;
@@ -41,6 +43,10 @@
     top: -50px;
     height: 50px;
     transition: left 1s, top 1s, height 1s;
+    z-index: -5;
+}
+#jellyfish.goAway.fromPatrick {
+    z-index: -7;
 }
 #jellyfish.goAway.withBob {
     animation: withBob 1s normal;
@@ -56,7 +62,7 @@
 }
 #jellyfish > img {
     height: 100%;
-    animation: jellyfishMove 3s infinite;
+    animation: jellyfishMove 3s linear infinite;
 }
 
 #bob.player,
@@ -64,6 +70,7 @@
 #carlos.player {
     left: 18%;
     bottom: calc(100% - 400px);
+    z-index: -4;
 }
 
 #bob.player {
@@ -71,7 +78,7 @@
 }
 #bob.player > img {
     transform: rotateY(180deg);
-    animation: playerMove 2.5s infinite;
+    animation: playerMove 2.5s linear infinite;
 }
 #bob.player.invisible {
     animation: invisible 0.7s normal;
@@ -94,7 +101,7 @@
 }
 #patrick.player > img {
     content: url("../images/player/patrick-player.png");
-    animation: playerMove 2.5s infinite;
+    animation: playerMove 2.5s linear infinite;
 }
 #patrick.player.lost {
     height: 200px;
@@ -110,7 +117,7 @@
     content: url("../images/player/carlos-player.png");
     transform: rotateY(180deg);
     margin-bottom: 20px;
-    animation: playerMove 2.5s infinite;
+    animation: playerMove 2.5s linear infinite;
 }
 #carlos.player.lost > img {
     content: url("../images/player/carlos-lost.png");

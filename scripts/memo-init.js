@@ -5,23 +5,13 @@ const player = getById("playerName");
 const score = getById("PlayersScore");
 
 /**
- * Variables
- */
-let canPlay = false;
-let player1 = {
-  name: "Vika",
-  score: 0,
-};
-let player2 = {
-  name: "Tom",
-  score: 0,
-};
-let currentPlayer;
-let firstSelectedSquareId = 0;
-
-/**
  * Constants
  */
+const player1Name = (getById("player1").value = "Vika");
+const player2Name = (getById("player2").value = "Tom");
+const player1 = new Player(player1Name, 0);
+const player2 = new Player(player2Name, 0);
+const ai = new Ai(false, undefined);
 const characters = [
   "bob",
   "carlos",
@@ -35,6 +25,13 @@ const characters = [
 ];
 
 /**
+ * Variables
+ */
+let canPlay = false;
+let currentPlayer;
+let firstSelectedSquareId = 0;
+
+/**
  * Game initialization
  */
 initGame();
@@ -43,6 +40,7 @@ initGame();
  * Initialization function
  */
 function initGame() {
+  checkNameEmpty();
   removeEndGame();
   firstSelectedSquareId = 0;
   const squares = getByClassName("square");
@@ -84,6 +82,12 @@ function initGame() {
 /**
  * Helper functions
  */
+function checkNameEmpty() {
+  const name1 = getById("player1").value;
+  const name2 = getById("player2").value;
+  getById("newGameVersus").disabled = [name1, name2].includes("") || ai.enabled;
+}
+
 function setCurrentPlayerName(name) {
   currentPlayer = name;
   player.innerHTML = `Au tour de ${currentPlayer}.`;
@@ -92,14 +96,13 @@ function printScore() {
   score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
 }
 function removeEndGame() {
-  const bob = getById('bob');
-  const patrick = getById('patrick');
-  const carlos = getById('carlos');
-  bob.classList.remove('lost');
-  bob.classList.remove('win');
-  patrick.classList.remove('lost');
-  patrick.classList.remove('win');
-  carlos.classList.remove('lost');
-  carlos.classList.remove('win');
+  const bob = getById("bob");
+  const patrick = getById("patrick");
+  const carlos = getById("carlos");
+  bob.classList.remove("lost");
+  bob.classList.remove("win");
+  patrick.classList.remove("lost");
+  patrick.classList.remove("win");
+  carlos.classList.remove("lost");
+  carlos.classList.remove("win");
 }
-         

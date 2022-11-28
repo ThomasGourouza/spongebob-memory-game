@@ -9,29 +9,29 @@
     height: 110%;
 }
 #patrick.dance {
-    animation: patrickDanceSmooth 0.8s infinite;
+    animation: patrickDanceSmooth 0.8s linear infinite;
 }
 #patrick.dance > img {
     content: url("../images/dancing/patrick-dance-2.png");
-    animation: dance 0.8s infinite;
+    animation: dance 0.8s linear infinite;
 }
 
 #carlos.dance > img {
     content: url("../images/dancing/carlos-dance.png");
-    animation: carlosDance 0.7s infinite;
+    animation: carlosDance 0.7s linear infinite;
     height: 280px;
     transform: translateX(50px);
     margin-bottom: -15px;
 }
 
 #bob.dance {
-    animation: bobDanceSmooth 1s infinite;
+    animation: bobDanceSmooth 1s linear infinite;
     transform: rotateY(180deg);
 }
 #bob.dance > img {
     transform: rotateY(180deg);
     content: url("../images/dancing/bob-dance.png");
-    animation: dance 1s infinite;
+    animation: dance 1s linear infinite;
 }
 
 @keyframes dance {

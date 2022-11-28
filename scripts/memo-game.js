@@ -5,11 +5,6 @@ const timeToMemorize = 2000;
 const timeBeforeRevealEndGame = 500;
 
 /**
- * Variables
- */
-let ai = new Ai(false, undefined);
-
-/**
  * Event function
  */
 function showPicture(div) {

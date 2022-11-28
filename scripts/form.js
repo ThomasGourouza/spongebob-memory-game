@@ -5,6 +5,7 @@ const jellyfish = getById("jellyfish");
 const audio = getElements("audio")[0];
 
 audio.volume = 0;
+const audioButton = getById("audio");
 toggleAudio();
 
 /**
@@ -17,6 +18,21 @@ function toggleAudio() {
       ? character.classList.replace("sad", "dance")
       : character.classList.replace("dance", "sad");
   });
+  audioButton.innerHTML =
+    audio.volume === 1 ? "Turn music off" : "Turn music on";
+}
+
+function validatePlayerForm() {
+  const name1 = getById("player1").value;
+  const name2 = getById("player2").value;
+  if ([name1, name2].includes("")) {
+    return;
+  }
+  player1.name = name1;
+  player2.name = name2;
+  setCurrentPlayerName(player1.name);
+  printScore();
+  initGame();
 }
 
 function playAgainst(name) {
@@ -51,6 +67,9 @@ function playAgainst(name) {
       jellyfish.className = aiInfo.toCharacter;
       setTimeout(() => {
         jellyfish.className = "goAway";
+        if (name === "patrick") {
+          jellyfish.classList.add("fromPatrick");
+        }
       }, 1000);
     }
 
