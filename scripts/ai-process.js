@@ -56,9 +56,6 @@ function playAnimation(firstCard, secondCard) {
     gameProcess(firstSquare, false);
     setTimeout(() => {
       if (gameProcess(secondSquare, false)) {
-        gameMemory = gameMemory.filter(
-          (card) => ![firstCard.id, secondCard.id].includes(card.id)
-        );
         playAi(ai.name);
       } else {
         setTimeout(() => {

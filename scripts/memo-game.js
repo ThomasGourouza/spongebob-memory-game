@@ -29,7 +29,10 @@ function gameProcess(div, allowAI) {
   }
   const firstSelectedSquare = getById(firstSelectedSquareId);
   firstSelectedSquareId = 0;
-  if (firstSelectedSquare.getAttribute("name") === div.getAttribute("name")) {
+  const firstCard = new Card(firstSelectedSquare.getAttribute("id"), firstSelectedSquare.getAttribute("name"));
+  const secondCard = new Card(div.getAttribute("id"), div.getAttribute("name"));
+  if (firstCard.name === secondCard.name) {
+    removeCardsFromMemory(firstCard, secondCard);
     incrementScoreOfCurrentPlayer();
     setColorOnSquares(firstSelectedSquare, div);
     const remainingSquares = getByClassName("hidden");
@@ -68,6 +71,12 @@ function fillMemory(name, div) {
     }
     gameMemory.push(card);
   }
+}
+
+function removeCardsFromMemory(firstCard, secondCard) {
+  gameMemory = gameMemory.filter(
+    (card) => ![firstCard.id, secondCard.id].includes(card.id)
+  );
 }
 
 function isCardInArray(card, array) {
