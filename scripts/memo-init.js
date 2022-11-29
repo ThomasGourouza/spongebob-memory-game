@@ -30,6 +30,7 @@ const characters = [
 let canPlay = false;
 let currentPlayer;
 let firstSelectedSquareId = 0;
+let gameMemory = [];
 
 /**
  * Game initialization
@@ -43,6 +44,7 @@ function initGame() {
   makeSquaresCliquable();
   checkNameEmpty();
   removeEndGame();
+  gameMemory = [];
   firstSelectedSquareId = 0;
   const squares = getByClassName("square");
   let intAlreadyChoosen = [];

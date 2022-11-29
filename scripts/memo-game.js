@@ -5,11 +5,6 @@ const timeToMemorize = 2000;
 const timeBeforeRevealEndGame = 500;
 
 /**
- * Variables
- */
-let carlosMemory = [];
-
-/**
  * Event function
  */
 function showPicture(div) {
@@ -63,19 +58,20 @@ function gameProcess(div, allowAI) {
  * Helper functions
  */
 function fillMemory(name, div) {
-  switch (name) {
-    case "bob":
-    case "patrick":
-      break;
-    case "carlos":
-      const card = new Card(div.getAttribute("id"), div.getAttribute("name"));
-      if (!carlosMemory.map((c) => c.id).includes(card.id)) {
-        carlosMemory.push(card);
-      }
-      break;
-    default:
-      break;
+  if (!["bob", "carlos"].includes(name)) {
+    return;
   }
+  const card = new Card(div.getAttribute("id"), div.getAttribute("name"));
+  if (!isCardInArray(card, gameMemory)) {
+    if (name === "bob" && gameMemory.length > 3) {
+      gameMemory.shift();
+    }
+    gameMemory.push(card);
+  }
+}
+
+function isCardInArray(card, array) {
+  return array.map((c) => c.id).includes(card.id);
 }
 
 function endOfGame(remainingSquares) {

@@ -3,61 +3,63 @@ const squares = getByClassName("square");
 function playAi(name) {
   switch (name) {
     case "bob":
-    case "patrick":
-      return playAiPatrick(name);
     case "carlos":
-      return playAiCarlos(name);
+      return playAiWithMemory();
+    case "patrick":
+      return playAiPatrick();
     default:
       return playGod();
   }
 }
 
-function playAiPatrick(name) {
+function playAiPatrick() {
   const cards = getCards();
   const firstCard = getRandomItem(cards);
   const secondCard = getRandomWrongCardFromIn(firstCard, cards);
-  playAnimation(name, firstCard, secondCard);
+  playAnimation(firstCard, secondCard);
 }
 
-function playAiCarlos(name) {
+function playAiWithMemory() {
   const cards = getCards();
   let firstCard;
   let secondCard;
-  if (carlosMemory.length === 0) {
+  if (gameMemory.length === 0) {
     firstCard = getRandomItem(cards);
     secondCard = getRandomCardDifferentFromIn(firstCard, cards);
   } else {
-    const winCards = getWinCardsFrom(carlosMemory);
+    const winCards = getWinCardsFrom(gameMemory);
     if (winCards.length > 1) {
       firstCard = getRandomItem(winCards);
       secondCard = getMatchingCardToIn(firstCard, winCards);
     } else {
       firstCard = getRandomItem(cards);
-      secondCard = getMatchingCardToIn(firstCard, carlosMemory);
+      secondCard = getMatchingCardToIn(firstCard, gameMemory);
       if (!secondCard) {
         secondCard = getRandomCardDifferentFromIn(firstCard, cards);
       }
     }
   }
-  playAnimation(name, firstCard, secondCard);
+  playAnimation(firstCard, secondCard);
 }
 
-function playGod(name) {
+function playGod() {
   const winCards = getWinCardsFrom(getCards());
   const firstCard = getRandomItem(winCards);
   const secondCard = getMatchingCardToIn(firstCard, winCards);
-  playAnimation(name, firstCard, secondCard);
+  playAnimation(firstCard, secondCard);
 }
 
-function playAnimation(name, firstCard, secondCard) {
+function playAnimation(firstCard, secondCard) {
   const firstSquare = getById(firstCard.id);
   const secondSquare = getById(secondCard.id);
   setTimeout(() => {
     gameProcess(firstSquare, false);
     setTimeout(() => {
       if (gameProcess(secondSquare, false)) {
-        carlosMemory = carlosMemory.filter((card) => ![firstCard.id, secondCard.id].includes(card.id));
-        playAi(name);
+        gameMemory = gameMemory.filter(
+          (card) => ![firstCard.id, secondCard.id].includes(card.id)
+        );
+        playAi(ai.name);
       } else {
         setTimeout(() => {
           makeSquaresCliquable();
@@ -69,17 +71,15 @@ function playAnimation(name, firstCard, secondCard) {
 
 function getWinCardsFrom(array) {
   return array.filter((card) =>
-      array
-        .filter((c) => c.id !== card.id)
-        .map((c) => c.name)
-        .includes(card.name)
-    );
+    array
+      .filter((c) => c.id !== card.id)
+      .map((c) => c.name)
+      .includes(card.name)
+  );
 }
 
 function getMatchingCardToIn(card, array) {
-  return array.find(
-    (c) => c.id !== card.id && c.name === card.name
-  );
+  return array.find((c) => c.id !== card.id && c.name === card.name);
 }
 
 function getRandomCardDifferentFromIn(card, array) {
