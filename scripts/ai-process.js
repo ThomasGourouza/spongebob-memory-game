@@ -15,12 +15,7 @@ function playAi(name) {
 function playAiPatrick(name) {
   const cards = getCards();
   const firstCard = getRandomItem(cards);
-  let secondCard;
-  let i;
-  do {
-    i = getRandomInt(0, cards.length - 1);
-    secondCard = cards[i];
-  } while (firstCard.name === secondCard.name);
+  const secondCard = getRandomWrongCardFromIn(firstCard, cards);
   playAnimation(name, firstCard, secondCard);
 }
 
@@ -28,36 +23,19 @@ function playAiCarlos(name) {
   const cards = getCards();
   let firstCard;
   let secondCard;
-  // Si mémoire vide
   if (carlosMemory.length === 0) {
     firstCard = getRandomItem(cards);
-    do {
-      secondCard = getRandomItem(cards);
-    } while (firstCard.id === secondCard.id);
+    secondCard = getRandomCardDifferentFromIn(firstCard, cards);
   } else {
-    // si deux cartes de meme name dans la mémoire, les jouer
-    const winCards = carlosMemory.filter((card) =>
-      carlosMemory
-        .filter((c) => c.id !== card.id)
-        .map((c) => c.name)
-        .includes(card.name)
-    );
+    const winCards = getWinCardsFrom(carlosMemory);
     if (winCards.length > 1) {
       firstCard = getRandomItem(winCards);
-      secondCard = winCards.find(
-        (card) => card.id !== firstCard.id && card.name === firstCard.name
-      );
+      secondCard = getMatchingCardToIn(firstCard, winCards);
     } else {
-      // sinon jouer la première au hasard
       firstCard = getRandomItem(cards);
-      secondCard = carlosMemory.find(
-        (card) => card.id !== firstCard.id && card.name === firstCard.name
-      );
-      // si la deuxième du même name n'est pas dans la mémoire, jouer la deuxième au hasard
+      secondCard = getMatchingCardToIn(firstCard, carlosMemory);
       if (!secondCard) {
-        do {
-          secondCard = getRandomItem(cards);
-        } while (firstCard.id === secondCard.id);
+        secondCard = getRandomCardDifferentFromIn(firstCard, cards);
       }
     }
   }
@@ -65,17 +43,9 @@ function playAiCarlos(name) {
 }
 
 function playGod(name) {
-  const cards = getCards();
-  const winCards = cards.filter((card) =>
-    cards
-      .filter((c) => c.id !== card.id)
-      .map((c) => c.name)
-      .includes(card.name)
-  );
+  const winCards = getWinCardsFrom(getCards());
   const firstCard = getRandomItem(winCards);
-  const secondCard = winCards.find(
-    (card) => card.id !== firstCard.id && card.name === firstCard.name
-  );
+  const secondCard = getMatchingCardToIn(firstCard, winCards);
   playAnimation(name, firstCard, secondCard);
 }
 
@@ -95,6 +65,37 @@ function playAnimation(name, firstCard, secondCard) {
       }
     }, 1000);
   }, 1000);
+}
+
+function getWinCardsFrom(array) {
+  return array.filter((card) =>
+      array
+        .filter((c) => c.id !== card.id)
+        .map((c) => c.name)
+        .includes(card.name)
+    );
+}
+
+function getMatchingCardToIn(card, array) {
+  return array.find(
+    (c) => c.id !== card.id && c.name === card.name
+  );
+}
+
+function getRandomCardDifferentFromIn(card, array) {
+  let randomCard;
+  do {
+    randomCard = getRandomItem(array);
+  } while (randomCard.id === card.id);
+  return randomCard;
+}
+
+function getRandomWrongCardFromIn(card, array) {
+  let randomCard;
+  do {
+    randomCard = getRandomItem(array);
+  } while (randomCard.name === card.name);
+  return randomCard;
 }
 
 function getRandomItem(array) {
