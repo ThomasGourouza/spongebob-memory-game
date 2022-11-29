@@ -5,12 +5,17 @@ const timeToMemorize = 2000;
 const timeBeforeRevealEndGame = 500;
 
 /**
+ * Variables
+ */
+let carlosMemory = [];
+
+/**
  * Event function
  */
 function showPicture(div) {
-  gameProcess(div, ai);
+  gameProcess(div, true);
 }
-function gameProcess(div, ai) {
+function gameProcess(div, allowAI) {
   const id = div.getAttribute("id");
   if (
     firstSelectedSquareId === id ||
@@ -18,6 +23,9 @@ function gameProcess(div, ai) {
     canPlay === false
   ) {
     return false;
+  }
+  if (ai.enabled) {
+    fillMemory(ai.name, div);
   }
   div.classList.remove("hidden");
   if (firstSelectedSquareId === 0) {
@@ -42,7 +50,7 @@ function gameProcess(div, ai) {
     firstSelectedSquare.classList.add("hidden");
     div.classList.add("hidden");
     canPlay = true;
-    if (ai.enabled) {
+    if (ai.enabled && allowAI) {
       playAi(ai.name);
     } else {
       makeSquaresCliquable();
@@ -54,6 +62,22 @@ function gameProcess(div, ai) {
 /**
  * Helper functions
  */
+function fillMemory(name, div) {
+  switch (name) {
+    case "bob":
+    case "patrick":
+      break;
+    case "carlos":
+      const card = new Card(div.getAttribute("id"), div.getAttribute("name"));
+      if (!carlosMemory.map((c) => c.id).includes(card.id)) {
+        carlosMemory.push(card);
+      }
+      break;
+    default:
+      break;
+  }
+}
+
 function endOfGame(remainingSquares) {
   setTimeout(() => {
     const winner = getWinnerName();
@@ -88,7 +112,6 @@ function getNextPlayerName() {
 function getWinnerName() {
   return player1.score > player2.score ? player1.name : player2.name;
 }
-
 function congratulatePlayer(name) {
   player.innerHTML = `Congratulations ${name}!`;
 }
