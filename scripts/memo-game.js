@@ -61,7 +61,7 @@ function gameProcess(div, allowAI) {
  * Helper functions
  */
 function fillMemory(name, div) {
-  if (!["bob", "squidward"].includes(name)) {
+  if (!["bob", "squidward", "plankton"].includes(name)) {
     return;
   }
   const card = new Card(div.getAttribute("id"), div.getAttribute("name"));

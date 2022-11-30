@@ -4,7 +4,8 @@ function playAi(name) {
   switch (name) {
     case "bob":
     case "squidward":
-      return playAiWithMemory();
+    case "plankton":
+      return playAiWithMemory(name);
     case "patrick":
       return playAiPatrick();
     case "karen":
@@ -21,7 +22,7 @@ function playAiPatrick() {
   playAnimation(firstCard, secondCard);
 }
 
-function playAiWithMemory() {
+function playAiWithMemory(name) {
   const cards = getCards();
   let firstCard;
   let secondCard;
@@ -34,14 +35,37 @@ function playAiWithMemory() {
       firstCard = getRandomItem(winCards);
       secondCard = getMatchingCardToIn(firstCard, winCards);
     } else {
-      firstCard = getRandomItem(cards);
-      secondCard = getMatchingCardToIn(firstCard, gameMemory);
-      if (!secondCard) {
-        secondCard = getRandomCardDifferentFromIn(firstCard, cards);
-      }
+      const strategy =
+        name === "squidward"
+          ? squidwardStrategy(cards)
+          : planktonAndBobStrategy(cards);
+      firstCard = strategy.firstCard;
+      secondCard = strategy.secondCard;
     }
   }
   playAnimation(firstCard, secondCard);
+}
+
+function squidwardStrategy(cards) {
+  const firstCard = getRandomItem(cards);
+  return {
+    firstCard,
+    secondCard:
+      getMatchingCardToIn(firstCard, gameMemory) ||
+      getRandomCardDifferentFromIn(firstCard, cards),
+  };
+}
+
+function planktonAndBobStrategy(cards) {
+  const firstCard =
+    getRandomItemInAndNotIn(cards, gameMemory) || getRandomItem(cards);
+  return {
+    firstCard,
+    secondCard:
+      getMatchingCardToIn(firstCard, gameMemory) ||
+      getRandomCardDifferentFromIn(firstCard, gameMemory) ||
+      getRandomCardDifferentFromIn(firstCard, cards),
+  };
 }
 
 function playKaren() {
@@ -95,6 +119,13 @@ function getRandomWrongCardFromIn(card, array) {
     randomCard = getRandomItem(array);
   } while (randomCard.name === card.name);
   return randomCard;
+}
+
+function getRandomItemInAndNotIn(cards, gameMemory) {
+  const possibilities = cards.filter(
+    (card) => !gameMemory.map((c) => c.id).includes(card.id)
+  );
+  return getRandomItem(possibilities);
 }
 
 function getRandomItem(array) {
