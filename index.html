@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="styles/bubble.css">
     <link rel="stylesheet" href="styles/form.css">
     <link rel="stylesheet" href="styles/position.css">
-    <link rel="stylesheet" href="styles/dance.css">
-    <link rel="stylesheet" href="styles/player.css">
+    <link rel="stylesheet" href="styles/dancing.css">
+    <link rel="stylesheet" href="styles/playing.css">
 </head>
 
 <body>
@@ -33,7 +33,8 @@
         <button name="control" id="init" onclick="initGame()">New Game</button>
         <button name="play" id="playBob" onclick="playAgainst('bob')">Play Bob</button>
         <button name="play" id="playPatrick" onclick="playAgainst('patrick')">Play Patrick</button>
-        <button name="play" id="playCarlos" onclick="playAgainst('carlos')">Play Carlos</button>
+        <button name="play" id="playSquidward" onclick="playAgainst('squidward')">Play Squidward</button>
+        <button name="play" id="playKaren" onclick="playAgainst('karen')">Play Plankton</button>
     </div>
     <div class="bubbles">
         <div class="bubble"></div>
@@ -68,17 +69,23 @@
         <div id=15 class="square" onclick="showPicture(this)"></div>
         <div id=16 class="square" onclick="showPicture(this)"></div>
     </div>
+    <div id="karen" class="notHere">
+        <img src="images/playing/karen.png" alt="karen">
+    </div>
     <div id="jellyfish" class="notHere">
-        <img src="images/player/jellyfish.png" alt="jellyfish">
+        <img src="images/playing/jellyfish.png" alt="jellyfish">
     </div>
-    <div id="carlos" class="sad">
-        <img src="images/sad/carlos-sad.png" alt="carlos">
+    <div id="squidward" class="not-dancing">
+        <img src="images/not-dancing/squidward-not-dancing.png" alt="squidward">
     </div>
-    <div id="patrick" class="sad">
-        <img src="images/sad/patrick-sad.png" alt="patrick">
+    <div id="patrick" class="not-dancing">
+        <img src="images/not-dancing/patrick-not-dancing.png" alt="patrick">
     </div>
-    <div id="bob" class="sad">
-        <img src="images/sad/bob-sad.png" alt="bob">
+    <div id="bob" class="not-dancing">
+        <img src="images/not-dancing/bob-not-dancing.png" alt="bob">
+    </div>
+    <div id="plankton" class="not-dancing">
+        <img src="images/not-dancing/plankton-not-dancing.png" alt="plankton">
     </div>
     <script src="scripts/models/ai-info.js"></script>
     <script src="scripts/models/card.js"></script>

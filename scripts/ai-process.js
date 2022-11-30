@@ -3,12 +3,14 @@ const squares = getByClassName("square");
 function playAi(name) {
   switch (name) {
     case "bob":
-    case "carlos":
+    case "squidward":
       return playAiWithMemory();
     case "patrick":
       return playAiPatrick();
+    case "karen":
+      return playKaren();
     default:
-      return playGod();
+      return;
   }
 }
 
@@ -42,7 +44,7 @@ function playAiWithMemory() {
   playAnimation(firstCard, secondCard);
 }
 
-function playGod() {
+function playKaren() {
   const winCards = getWinCardsFrom(getCards());
   const firstCard = getRandomItem(winCards);
   const secondCard = getMatchingCardToIn(firstCard, winCards);

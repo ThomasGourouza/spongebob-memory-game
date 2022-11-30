@@ -44,7 +44,7 @@ body {
     height: 80px;
     margin-bottom: 10px;
 }
-.square > img.carlos,
+.square > img.squidward,
 .square > img.pearl,
 .square > img.krabs {
     height: 100px;
@@ -52,7 +52,7 @@ body {
 .square > img.patrick {
     height: 90px;
 }
-.square > img.plancton {
+.square > img.plankton {
     height: 60px;
 }
 .square > img.gary {

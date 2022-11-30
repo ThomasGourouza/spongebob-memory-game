@@ -1,0 +1,52 @@
+#bob > img,
+#patrick > img,
+#squidward > img {
+    height: 100%;
+}
+
+#patrick.not-dancing > img {
+    transform: translateX(-30px);
+    height: 110%;
+}
+#patrick.dancing {
+    animation: patrickDancingSmooth 0.8s linear infinite;
+}
+#patrick.dancing > img {
+    content: url("../images/dancing/patrick-dancing-2.png");
+    animation: dancing 0.8s linear infinite;
+}
+
+#squidward.dancing > img {
+    content: url("../images/dancing/squidward-dancing.png");
+    animation: squidwardDancing 0.7s linear infinite;
+    height: 280px;
+    transform: translateX(50px);
+    margin-bottom: -15px;
+}
+
+#bob.dancing {
+    animation: bobDancingSmooth 1s linear infinite;
+    transform: rotateY(180deg);
+}
+#bob.dancing > img {
+    transform: rotateY(180deg);
+    content: url("../images/dancing/bob-dancing.png");
+    animation: dancing 1s linear infinite;
+}
+
+@keyframes dancing {
+    0% { transform: rotate(10deg); }
+    50% { transform: rotate(-5deg); }
+    100% { transform: rotate(10deg); }
+}
+@keyframes patrickDancingSmooth {
+    50% { height: 175px; }
+}
+
+@keyframes bobDancingSmooth {
+    50% { height: 145px }
+}
+
+@keyframes squidwardDancing {
+    50%  { height: 290px; }
+}

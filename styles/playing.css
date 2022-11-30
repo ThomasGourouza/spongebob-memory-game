@@ -21,7 +21,7 @@
     height: 190px;
     transition: left 1s, top 1s, height 1s;
 }
-#jellyfish.toCarlos {
+#jellyfish.toSquidward {
     left: 18%;
     top: 82%;
     height: 300px;
@@ -65,22 +65,22 @@
     animation: jellyfishMove 3s linear infinite;
 }
 
-#bob.player,
-#patrick.player,
-#carlos.player {
+#bob.playing,
+#patrick.playing,
+#squidward.playing {
     left: 18%;
     bottom: calc(100% - 400px);
     z-index: -4;
 }
 
-#bob.player {
+#bob.playing {
     height: 175px;
 }
-#bob.player > img {
+#bob.playing > img {
     transform: rotateY(180deg);
     animation: playerMove 2.5s linear infinite;
 }
-#bob.player.invisible {
+#bob.playing.invisible {
     animation: invisible 0.7s normal;
 }
 #bob.notHere {
@@ -89,38 +89,38 @@
     height: 165px;
     animation: disapear 1s normal;
 }
-#bob.player.lost {
+#bob.playing.lost {
     /* height: 200px; */
 }
-#bob.player.lost > img {
-    /* content: url("../images/player/patrick-lost.png"); */
+#bob.playing.lost > img {
+    /* content: url("../images/playing/patrick-lost.png"); */
 }
 
-#patrick.player {
+#patrick.playing {
     height: 230px;
 }
-#patrick.player > img {
-    content: url("../images/player/patrick-player.png");
+#patrick.playing > img {
+    content: url("../images/playing/patrick-playing.png");
     animation: playerMove 2.5s linear infinite;
 }
-#patrick.player.lost {
+#patrick.playing.lost {
     height: 200px;
 }
-#patrick.player.lost > img {
-    content: url("../images/player/patrick-lost.png");
+#patrick.playing.lost > img {
+    content: url("../images/playing/patrick-lost.png");
 }
 
-#carlos.player {
+#squidward.playing {
     height: 240px;
 }
-#carlos.player > img {
-    content: url("../images/player/carlos-player.png");
+#squidward.playing > img {
+    content: url("../images/playing/squidward-playing.png");
     transform: rotateY(180deg);
     margin-bottom: 20px;
     animation: playerMove 2.5s linear infinite;
 }
-#carlos.player.lost > img {
-    content: url("../images/player/carlos-lost.png");
+#squidward.playing.lost > img {
+    content: url("../images/playing/squidward-lost.png");
 }
 
 @keyframes jellyfishMove {
@@ -134,13 +134,13 @@
 }
 
 @keyframes withBob {
-    0%  { content: url("../images/player/bob-coming.png"); height: 200px; transform: translateY(-50px); }
-    100%  { content: url("../images/player/bob-coming.png"); height: 330px; transform: translateY(-100px); }
+    0%  { content: url("../images/playing/bob-coming.png"); height: 200px; transform: translateY(-50px); }
+    100%  { content: url("../images/playing/bob-coming.png"); height: 330px; transform: translateY(-100px); }
 }
 
 @keyframes withBobAway {
-    0%  { content: url("../images/player/bob-coming.png"); height: 330px; transform: rotateY(180deg) translateY(-100px); }
-    100%  { content: url("../images/player/bob-coming.png"); height: 100px; transform: rotateY(180deg); }
+    0%  { content: url("../images/playing/bob-coming.png"); height: 330px; transform: rotateY(180deg) translateY(-100px); }
+    100%  { content: url("../images/playing/bob-coming.png"); height: 100px; transform: rotateY(180deg); }
 }
 
 @keyframes invisible {

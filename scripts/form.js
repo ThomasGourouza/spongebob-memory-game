@@ -1,6 +1,8 @@
 const bob = getById("bob");
 const patrick = getById("patrick");
-const carlos = getById("carlos");
+const squidward = getById("squidward");
+const plankton = getById("plankton");
+const karen = getById("karen");
 const jellyfish = getById("jellyfish");
 const audio = getElements("audio")[0];
 
@@ -13,10 +15,10 @@ toggleAudio();
  */
 function toggleAudio() {
   audio.volume = audio.volume === 1 ? 0 : 1;
-  [bob, patrick, carlos].forEach((character) => {
+  [bob, patrick, squidward].forEach((character) => {
     audio.volume === 1
-      ? character.classList.replace("sad", "dance")
-      : character.classList.replace("dance", "sad");
+      ? character.classList.replace("not-dancing", "dancing")
+      : character.classList.replace("dancing", "not-dancing");
   });
   audioButton.innerHTML =
     audio.volume === 1 ? "Turn music off" : "Turn music on";
@@ -41,8 +43,8 @@ function playAgainst(name) {
   }
   const aiInfo = getAIInfo(name);
   toggleButtons(name, aiInfo);
-  const currentState = audio.volume === 1 ? "dance" : "sad";
-  if (!aiInfo.character.classList.contains("player")) {
+  const currentState = audio.volume === 1 ? "dancing" : "not-dancing";
+  if (!aiInfo.character.classList.contains("playing")) {
     aiInfo.runAI(true);
     jellyfish.className = aiInfo.toCharacter;
     setTimeout(() => {
@@ -51,19 +53,19 @@ function playAgainst(name) {
         jellyfish.classList.add("withBob");
         bob.classList.add("invisible");
       }
-      aiInfo.character.classList.replace(currentState, "player");
+      aiInfo.character.classList.replace(currentState, "playing");
     }, 1000);
   } else {
     aiInfo.runAI(false);
     if (name === "bob") {
       jellyfish.className = "goAwayRight";
       jellyfish.classList.add("withBob");
-      bob.classList.replace("player", "notHere");
+      bob.classList.replace("playing", "notHere");
       setTimeout(() => {
         bob.classList.replace("notHere", currentState);
       }, 1000);
     } else {
-      aiInfo.character.classList.replace("player", currentState);
+      aiInfo.character.classList.replace("playing", currentState);
       jellyfish.className = aiInfo.toCharacter;
       setTimeout(() => {
         jellyfish.className = "goAway";
@@ -127,16 +129,24 @@ function getAIInfo(name) {
         "Play Patrick",
         getById("playPatrick")
       );
-    case "carlos":
+    case "squidward":
       return new AIInfo(
-        carlos,
-        "toCarlos",
-        (value) => setAI("Carlos", value),
-        "Play Carlos",
-        getById("playCarlos")
+        squidward,
+        "toSquidward",
+        (value) => setAI("Squidward", value),
+        "Play Squidward",
+        getById("playSquidward")
+      );
+    case "karen":
+      return new AIInfo(
+        plankton,
+        "toPlankton",
+        (value) => setAI("Karen", value),
+        "Play Plankton",
+        getById("playKaren")
       );
     default:
-      return undefined;
+      return;
   }
 }
 
@@ -146,8 +156,8 @@ function getButtonId(name) {
       return "playBob";
     case "patrick":
       return "playPatrick";
-    case "carlos":
-      return "playCarlos";
+    case "squidward":
+      return "playSquidward";
     default:
       return undefined;
   }

@@ -14,12 +14,12 @@ const player2 = new Player(player2Name);
 const ai = new Ai();
 const characters = [
   "bob",
-  "carlos",
+  "squidward",
   "gary",
   "krabs",
   "patrick",
   "pearl",
-  "plancton",
+  "plankton",
   "puff",
   "sandy",
 ];
@@ -101,13 +101,12 @@ function printScore() {
 function removeEndGame() {
   const bob = getById("bob");
   const patrick = getById("patrick");
-  const carlos = getById("carlos");
+  const squidward = getById("squidward");
   bob.classList.remove("lost");
-  bob.classList.remove("win");
+  bob.classList.remove("won");
   patrick.classList.remove("lost");
-  patrick.classList.remove("win");
-  carlos.classList.remove("lost");
-  carlos.classList.remove("win");
+  squidward.classList.remove("lost");
+  squidward.classList.remove("won");
 }
 function makeSquaresUncliquable() {
   getByClassName("square").forEach((square) => {

@@ -4,7 +4,7 @@
 }
 #bob,
 #patrick,
-#carlos {
+#squidward {
     position: absolute;
     display: flex;
     align-items: flex-end;
@@ -25,7 +25,7 @@
     transition: left 1s, bottom 1s, height 1s;
 }
 
-#carlos {
+#squidward {
     z-index: -3;
     transform: rotateY(180deg);
     left: 20%;
