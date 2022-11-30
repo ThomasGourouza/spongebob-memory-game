@@ -1,5 +1,5 @@
 body {
-    background: url(../images/back.png) center fixed;
+    background: url(../images/backgrounds/background.png) center fixed;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -23,7 +23,7 @@ body {
     align-items: flex-end;
     justify-content: center;
     border-color: gray;
-    background-image: url(../images/background.png);
+    background-image: url(../images/backgrounds/card-background.png);
     background-size: cover;
     z-index: 3;
 }

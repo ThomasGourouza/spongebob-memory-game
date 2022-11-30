@@ -67,7 +67,7 @@ function initGame() {
     square.classList.remove("player2");
 
     const img = createElement("img");
-    img.src = `images/${randomCharacter}.png`;
+    img.src = `images/cards/${randomCharacter}.png`;
     img.alt = randomCharacter;
     img.className = randomCharacter;
     if (square.firstChild) {
