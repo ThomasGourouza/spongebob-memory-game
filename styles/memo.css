@@ -49,11 +49,13 @@ body {
 .square > img.krabs {
     height: 100px;
 }
+.square > img.sandy,
+.square > img.puff,
 .square > img.patrick {
     height: 90px;
 }
 .square > img.plankton {
-    height: 60px;
+    height: 70px;
 }
 .square > img.gary {
     height: 40px;
