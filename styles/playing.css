@@ -100,6 +100,7 @@
     height: 230px;
 }
 #patrick.playing > img {
+    transform: translateX(-30px);
     content: url("../images/playing/patrick-playing.png");
     animation: playerMove 2.5s linear infinite;
 }
