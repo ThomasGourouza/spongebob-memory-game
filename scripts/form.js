@@ -16,7 +16,6 @@ function toggleAudio() {
       ? character.classList.replace("not-dancing", "dancing")
       : character.classList.replace("dancing", "not-dancing");
   });
-  audioButton.innerHTML = audio.volume === 1 ? "Mute" : "Music";
 }
 
 function validatePlayerForm() {

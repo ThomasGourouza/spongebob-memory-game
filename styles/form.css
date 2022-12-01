@@ -25,3 +25,16 @@ button:not(:disabled):hover {
 button:active {
   background-color: skyblue;
 }
+
+button:disabled > img {
+  width: 0;
+}
+
+button > img {
+  background-position: center;
+  height: 70%;
+}
+
+button:not(:disabled):hover > img {
+  height: 50%;
+}
