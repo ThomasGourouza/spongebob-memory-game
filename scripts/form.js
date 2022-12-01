@@ -72,11 +72,12 @@ function playAgainst(name) {
       }, 1000);
     } else if (name === "plankton") {
       karen.classList.remove("playing");
-      plankton.classList.remove("transition");
-      plankton.classList.remove("playing");
-      plankton.classList.remove("leaving");
+      plankton.classList.replace("playing", "goBack");
       setTimeout(() => {
         karen.classList.remove("transition");
+        plankton.classList.remove("transition");
+        plankton.classList.remove("goBack");
+        plankton.classList.remove("leaving");
       }, 2000);
     } else {
       aiInfo.character.classList.replace("playing", currentState);

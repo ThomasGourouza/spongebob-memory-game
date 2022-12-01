@@ -108,7 +108,9 @@ function removeEndGame() {
   patrick.classList.remove("lost");
   squidward.classList.remove("lost");
   squidward.classList.remove("won");
-  plankton.classList.remove("leaving");
+  if(ai.enabled) {
+    plankton.classList.remove("leaving");
+  }
 }
 function makeSquaresUncliquable() {
   getByClassName("square").forEach((square) => {
