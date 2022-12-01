@@ -12,7 +12,7 @@
     animation: patrickDancingSmooth 0.8s linear infinite;
 }
 #patrick.dancing > img {
-    content: url("../images/dancing/patrick-dancing-2.png");
+    content: url("../images/dancing/patrick-dancing.png");
     animation: dancing 0.8s linear infinite;
 }
 
