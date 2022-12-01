@@ -132,8 +132,12 @@ function getRandomItem(array) {
   return array[getRandomInt(0, array.length - 1)];
 }
 
-function setEndgame(name) {
-  getById(name).classList.add("lost");
+function setEndgamePicture(name) {
+  if (isAIWinner()) {
+    getById(name).classList.add("won");
+  } else {
+    getById(name).classList.add("lost");
+  }
 }
 
 function getCards() {

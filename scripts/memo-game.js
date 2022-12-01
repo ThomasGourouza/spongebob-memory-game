@@ -66,7 +66,7 @@ function fillMemory(name, div) {
   }
   const card = new Card(div.getAttribute("id"), div.getAttribute("name"));
   if (!isCardInArray(card, gameMemory)) {
-    if (name === "bob" && gameMemory.length > 3) {
+    if (name === "bob" && gameMemory.length > 4) {
       gameMemory.shift();
     }
     gameMemory.push(card);
@@ -93,7 +93,7 @@ function endOfGame(remainingSquares) {
       square.classList.add("alone");
     });
     if (ai.enabled) {
-      setEndgame(ai.name);
+      setEndgamePicture(ai.name);
     }
   }, timeBeforeRevealEndGame);
 }
@@ -116,6 +116,9 @@ function getNextPlayerName() {
 }
 function getWinnerName() {
   return player1.score > player2.score ? player1.name : player2.name;
+}
+function isAIWinner() {
+  return player2.score > player1.score;
 }
 function congratulatePlayer(name) {
   player.innerHTML = `Congratulations ${name}!`;

@@ -24,6 +24,10 @@
     margin-bottom: -15px;
 }
 
+#bob.not-dancing > img {
+    transform: translateX(25px);
+    height: 95%;
+}
 #bob.dancing {
     animation: bobDancingSmooth 1s linear infinite;
     transform: rotateY(180deg);

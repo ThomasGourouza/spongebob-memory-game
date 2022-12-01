@@ -1,7 +1,3 @@
-const bob = getById("bob");
-const patrick = getById("patrick");
-const squidward = getById("squidward");
-const plankton = getById("plankton");
 const karen = getById("karen");
 const jellyfish = getById("jellyfish");
 const audio = getElements("audio")[0];
@@ -49,17 +45,20 @@ function playAgainst(name) {
     jellyfish.className = aiInfo.toCharacter;
     setTimeout(() => {
       jellyfish.className = "isHere";
+      aiInfo.character.classList.replace(currentState, "playing");
       if (name === "bob") {
         jellyfish.classList.add("withBob");
         bob.classList.add("invisible");
+        setTimeout(() => {
+          jellyfish.classList.remove("withBob");
+          bob.classList.remove("invisible");
+        }, 700);
       }
-      aiInfo.character.classList.replace(currentState, "playing");
     }, 1000);
   } else {
     aiInfo.runAI(false);
     if (name === "bob") {
-      jellyfish.className = "goAwayRight";
-      jellyfish.classList.add("withBob");
+      jellyfish.className = "goAwayWithBob";
       bob.classList.replace("playing", "notHere");
       setTimeout(() => {
         bob.classList.replace("notHere", currentState);

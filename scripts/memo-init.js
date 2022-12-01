@@ -3,6 +3,10 @@
  */
 const player = getById("playerName");
 const score = getById("PlayersScore");
+const bob = getById("bob");
+const patrick = getById("patrick");
+const squidward = getById("squidward");
+// const plankton = getById("plankton");
 
 /**
  * Constants
@@ -99,14 +103,13 @@ function printScore() {
   score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;
 }
 function removeEndGame() {
-  const bob = getById("bob");
-  const patrick = getById("patrick");
-  const squidward = getById("squidward");
   bob.classList.remove("lost");
   bob.classList.remove("won");
   patrick.classList.remove("lost");
   squidward.classList.remove("lost");
   squidward.classList.remove("won");
+  // plankton.classList.remove("lost");
+  // plankton.classList.remove("won");
 }
 function makeSquaresUncliquable() {
   getByClassName("square").forEach((square) => {
