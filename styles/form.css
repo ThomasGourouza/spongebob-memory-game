@@ -16,21 +16,21 @@ button {
   border-radius: 50%;
 }
 
+button > img {
+  background-position: center;
+  height: 70%;
+}
+
 button:not(:disabled):hover {
   background-blend-mode: overlay;
   background-size: 130%;
   background-position: center;
 }
 
-button:active {
+button:not(:disabled):active {
   background-color: skyblue;
 }
 
-button > img {
-  background-position: center;
-  height: 70%;
-}
-
-button:hover > img {
+button:not(:disabled):hover > img {
   height: 60%;
 }
