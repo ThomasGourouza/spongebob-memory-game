@@ -131,6 +131,9 @@
 #karen.transition {
     transition: left 2s, bottom 2s, height 2s;
 }
+#bubblePlankton.transition {
+    transition: bottom 1s;
+}
 
 #plankton.playing {
     left: calc(14% + 75px);
@@ -150,6 +153,10 @@
 
 #karen.playing {
     left: 14%;
+}
+
+#bubblePlankton.coming {
+    bottom: calc(10% + 390px);
 }
 
 @keyframes jellyfishMove {

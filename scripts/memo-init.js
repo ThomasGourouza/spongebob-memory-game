@@ -7,6 +7,7 @@ const bob = getById("bob");
 const patrick = getById("patrick");
 const squidward = getById("squidward");
 const plankton = getById("plankton");
+const bubblePlankton = getById("bubblePlankton");
 
 /**
  * Constants

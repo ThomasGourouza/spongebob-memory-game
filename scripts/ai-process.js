@@ -125,7 +125,13 @@ function getRandomItem(array) {
 
 function setEndgamePicture(name) {
   if (name === "plankton") {
-    plankton.classList.add("leaving");
+    bubblePlankton.className = "transition";
+    bubblePlankton.classList.add("coming");
+    setTimeout(() => {
+      bubblePlankton.classList.remove("transition");
+      bubblePlankton.classList.remove("coming");
+      plankton.classList.add("leaving");
+    }, 1000);
     return;
   }
   if (isAIWinner()) {
