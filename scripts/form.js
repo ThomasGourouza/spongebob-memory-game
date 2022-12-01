@@ -71,10 +71,11 @@ function playAgainst(name) {
         bob.classList.replace("notHere", currentState);
       }, 1000);
     } else if (name === "plankton") {
-      karen.classList.remove("playing");
+      karen.classList.replace("playing", "goBack");
       plankton.classList.replace("playing", "goBack");
       setTimeout(() => {
         karen.classList.remove("transition");
+        karen.classList.remove("goBack");
         plankton.classList.remove("transition");
         plankton.classList.remove("goBack");
         plankton.classList.remove("leaving");
