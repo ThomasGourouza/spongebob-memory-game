@@ -29,7 +29,7 @@ function validatePlayerForm() {
   player1.name = name1;
   player2.name = name2;
   setCurrentPlayerName(player1.name);
-  ai.enabled ? playAgainst(ai.name) : initGame();
+  ai.enabled ? playAgainstNewOpponent(ai.name) : initGame();
 }
 
 function rematch() {
@@ -45,6 +45,17 @@ function rematch() {
 }
 
 function playAgainst(name) {
+  if (ai.enabled) {
+    validatePlayerForm();
+    setTimeout(() => {
+      playAgainstNewOpponent(name);
+    }, 2500);
+  } else {
+    playAgainstNewOpponent(name);
+  }
+}
+
+function playAgainstNewOpponent(name) {
   if (jellyfish.className === "goAway") {
     return;
   }
@@ -84,45 +95,46 @@ function comeToPlay(name, aiInfo, currentState) {
 
 function leaveTheGame(name, aiInfo, currentState) {
   aiInfo.runAI(false);
-    if (name === "bob") {
-      jellyfish.className = "goAwayWithBob";
-      bob.classList.replace("playing", "notHere");
-      setTimeout(() => {
-        bob.classList.replace("notHere", currentState);
-      }, 1000);
-    } else if (name === "plankton") {
-      karen.classList.replace("playing", "goBack");
-      plankton.classList.replace("playing", "goBack");
-      setTimeout(() => {
-        karen.classList.remove("transition");
-        karen.classList.remove("goBack");
-        plankton.classList.remove("transition");
-        plankton.classList.remove("goBack");
-        plankton.classList.remove("leaving");
-      }, 2000);
-    } else {
-      aiInfo.character.classList.replace("playing", currentState);
-      jellyfish.className = aiInfo.toCharacter;
-      setTimeout(() => {
-        jellyfish.className = "goAway";
-        if (name === "patrick") {
-          jellyfish.classList.add("fromPatrick");
-        }
-      }, 1000);
-    }
-    if (name !== "plankton") {
-      setTimeout(() => {
-        jellyfish.className = "notHere";
-      }, 2000);
-    }
+  if (name === "bob") {
+    jellyfish.className = "goAwayWithBob";
+    bob.classList.replace("playing", "notHere");
+    setTimeout(() => {
+      bob.classList.replace("notHere", currentState);
+    }, 1000);
+  } else if (name === "plankton") {
+    karen.classList.replace("playing", "goBack");
+    plankton.classList.replace("playing", "goBack");
+    setTimeout(() => {
+      karen.classList.remove("transition");
+      karen.classList.remove("goBack");
+      plankton.classList.remove("transition");
+      plankton.classList.remove("goBack");
+      plankton.classList.remove("leaving");
+    }, 2000);
+  } else {
+    aiInfo.character.classList.replace("playing", currentState);
+    jellyfish.className = aiInfo.toCharacter;
+    setTimeout(() => {
+      jellyfish.className = "goAway";
+      if (name === "patrick") {
+        jellyfish.classList.add("fromPatrick");
+      }
+    }, 1000);
+  }
+  if (name !== "plankton") {
+    setTimeout(() => {
+      jellyfish.className = "notHere";
+    }, 2000);
+  }
 }
 
 function toggleButtons() {
   const isAIPlaying = ai.enabled;
   const playButtons = getByName("play");
   if (!isAIPlaying) {
-    // désactive tout les boutons "player"
+    // désactive  le bouton du "player" courant
     playButtons
+      .filter((button) => (button.getAttribute("id").toLowerCase().includes(ai.name)))
       .forEach((button) => (button.disabled = true));
   } else {
     // désactive tout 2sec puis remet tout
