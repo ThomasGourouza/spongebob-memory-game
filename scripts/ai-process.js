@@ -124,9 +124,7 @@ function getRandomItem(array) {
 }
 
 function blockButtonsForPlanktonAnimation() {
-  const buttons = getElements("button").filter(
-    (button) => (button.getAttribute("disabled") === null)
-  );
+  const buttons = getElements("button");
   buttons.forEach((button) => (button.disabled = true));
   setTimeout(() => {
     buttons.forEach((button) => (button.disabled = false));

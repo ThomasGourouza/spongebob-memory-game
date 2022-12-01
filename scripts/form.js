@@ -43,6 +43,10 @@ function rematch() {
 }
 
 function playAgainst(name) {
+  if (name === ai.name) {
+    rematch();
+    return;
+  }
   if (ai.enabled) {
     ai.changed = true;
     validatePlayerForm();
@@ -61,7 +65,7 @@ function playAgainstNewOpponent(name) {
     return;
   }
   const aiInfo = getAIInfo(name);
-  toggleButtons(aiInfo.buttonId);
+  toggleButtons();
   const currentState = audio.volume === 1 ? "dancing" : "not-dancing";
   if (aiInfo.character.classList.contains("playing")) {
     leaveTheGame(name, aiInfo, currentState);
@@ -129,7 +133,7 @@ function leaveTheGame(name, aiInfo, currentState) {
   }
 }
 
-function toggleButtons(buttonId) {
+function toggleButtons() {
   if (!ai.enabled && !ai.changed && !!ai.name) {
     return;
   }
@@ -137,11 +141,7 @@ function toggleButtons(buttonId) {
   buttons.forEach((button) => (button.disabled = true));
   setTimeout(
     () => {
-      buttons
-        .filter(
-          (button) => button.getAttribute("id") !== buttonId || !ai.enabled
-        )
-        .forEach((button) => (button.disabled = false));
+      buttons.forEach((button) => (button.disabled = false));
     },
     ai.changed ? 4500 : 2000
   );
