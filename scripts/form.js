@@ -16,8 +16,7 @@ function toggleAudio() {
       ? character.classList.replace("not-dancing", "dancing")
       : character.classList.replace("dancing", "not-dancing");
   });
-  audioButton.innerHTML =
-    audio.volume === 1 ? "Mute" : "Music";
+  audioButton.innerHTML = audio.volume === 1 ? "Mute" : "Music";
 }
 
 function validatePlayerForm() {
@@ -46,8 +45,11 @@ function rematch() {
 
 function playAgainst(name) {
   if (ai.enabled) {
+    ai.changed = true;
     validatePlayerForm();
+    makeSquaresUncliquable();
     setTimeout(() => {
+      ai.changed = false;
       playAgainstNewOpponent(name);
     }, 2500);
   } else {
@@ -60,7 +62,7 @@ function playAgainstNewOpponent(name) {
     return;
   }
   const aiInfo = getAIInfo(name);
-  toggleButtons();
+  toggleButtons(aiInfo.buttonId);
   const currentState = audio.volume === 1 ? "dancing" : "not-dancing";
   if (aiInfo.character.classList.contains("playing")) {
     leaveTheGame(name, aiInfo, currentState);
@@ -128,28 +130,22 @@ function leaveTheGame(name, aiInfo, currentState) {
   }
 }
 
-function toggleButtons() {
-  const isAIPlaying = ai.enabled;
-  const playButtons = getByName("play");
-  if (!isAIPlaying) {
-    // désactive  le bouton du "player" courant
-    playButtons
-      .filter((button) => (button.getAttribute("id").toLowerCase().includes(ai.name)))
-      .forEach((button) => (button.disabled = true));
-  } else {
-    // désactive tout 2sec puis remet tout
-    disableButtonsFor2sec(playButtons);
+function toggleButtons(buttonId) {
+  if (!ai.enabled && !ai.changed && !!ai.name) {
+    return;
   }
-  // désactive les controls pendant 2sec
-  const controlButtons = getByName("control");
-  disableButtonsFor2sec(controlButtons);
-}
-
-function disableButtonsFor2sec(buttons) {
+  const buttons = getElements("button");
   buttons.forEach((button) => (button.disabled = true));
-  setTimeout(() => {
-    buttons.forEach((button) => (button.disabled = false));
-  }, 2000);
+  setTimeout(
+    () => {
+      buttons
+        .filter(
+          (button) => button.getAttribute("id") !== buttonId || !ai.enabled
+        )
+        .forEach((button) => (button.disabled = false));
+    },
+    ai.changed ? 4500 : 2000
+  );
 }
 
 function getAIInfo(name) {
@@ -158,25 +154,29 @@ function getAIInfo(name) {
       return new AIInfo(
         bob,
         "toBob",
-        (value) => setAI("Bob", value)
+        (value) => setAI("Bob", value),
+        "playBob"
       );
     case "patrick":
       return new AIInfo(
         patrick,
         "toPatrick",
-        (value) => setAI("Patrick", value)
+        (value) => setAI("Patrick", value),
+        "playPatrick"
       );
     case "squidward":
       return new AIInfo(
         squidward,
         "toSquidward",
-        (value) => setAI("Squidward", value)
+        (value) => setAI("Squidward", value),
+        "playSquidward"
       );
     case "plankton":
       return new AIInfo(
         plankton,
         "toPlankton",
-        (value) => setAI("Plankton", value)
+        (value) => setAI("Plankton", value),
+        "playPlankton"
       );
     default:
       return;
@@ -190,8 +190,8 @@ function getButtonId(name) {
 }
 
 function setAI(name, enabled) {
-  ai.name = name.toLowerCase();
   ai.enabled = enabled;
+  ai.name = enabled ? name.toLowerCase() : undefined;
   if (ai.enabled) {
     player2.name = name;
     player2.score = 0;

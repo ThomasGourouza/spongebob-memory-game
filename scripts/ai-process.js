@@ -123,8 +123,19 @@ function getRandomItem(array) {
   return array[getRandomInt(0, array.length - 1)];
 }
 
+function blockButtonsForPlanktonAnimation() {
+  const buttons = getElements("button").filter(
+    (button) => (button.getAttribute("disabled") === null)
+  );
+  buttons.forEach((button) => (button.disabled = true));
+  setTimeout(() => {
+    buttons.forEach((button) => (button.disabled = false));
+  }, 4000);
+}
+
 function setEndgamePicture(name) {
   if (name === "plankton") {
+    blockButtonsForPlanktonAnimation();
     bubblePlankton.className = "transition";
     bubblePlankton.classList.add("coming");
     setTimeout(() => {

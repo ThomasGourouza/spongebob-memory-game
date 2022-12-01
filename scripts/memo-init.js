@@ -93,13 +93,15 @@ function initGame() {
 function checkNameEmpty() {
   const name1 = getById("player1").value;
   const name2 = getById("player2").value;
-  getById("newGameVersus").disabled = [name1, name2].includes("");
+  if ([name1, name2].includes("")) {
+    getById("newGameVersus").disabled = true;
+  }
 }
 
 function setCurrentPlayerName(name) {
   currentPlayer = name;
   player.innerHTML = `${currentPlayer} is playing.`;
-  if (!ai.enabled) {
+  if (!ai.enabled && !ai.changed ) {
     player2.name = "Tom";
   }
   getById("player2").value = player2.name;
