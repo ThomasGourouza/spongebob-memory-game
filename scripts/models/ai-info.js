@@ -3,7 +3,5 @@ class AIInfo {
     this.character = character;
     this.toCharacter = toCharacter;
     this.runAI = runAI;
-    this.text = text;
-    this.button = button;
   }
 }
