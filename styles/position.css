@@ -2,19 +2,27 @@
 #patrick {
     z-index: -6;
 }
+
 #bob,
 #patrick,
-#squidward {
+#squidward,
+#plankton,
+#karen {
     position: absolute;
     display: flex;
     align-items: flex-end;
+}
+
+#bob,
+#patrick,
+#squidward {
+    transition: left 1s, bottom 1s, height 1s;
 }
 
 #bob {
     left: 75%;
     bottom: 12%;
     height: 135px;
-    transition: left 1s, bottom 1s, height 1s;
 }
 
 #patrick {
@@ -22,7 +30,6 @@
     left: 10%;
     bottom: 20%;
     height: 165px;
-    transition: left 1s, bottom 1s, height 1s;
 }
 
 #squidward {
@@ -31,5 +38,23 @@
     left: 20%;
     bottom: 5%;
     height: 260px;
-    transition: left 1s, bottom 1s, height 1s;
+}
+
+#plankton {
+    bottom: calc(10% + 385px);
+    height: 100px;
+    left: -225px;
+    z-index: -4;
+}
+
+#karen {
+    z-index: -5;
+    bottom: 10%;
+    height: 400px;
+    left: -300px;
+}
+
+#plankton > img,
+#karen > img {
+    height: 100%;
 }

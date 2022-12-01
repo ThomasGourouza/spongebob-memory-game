@@ -127,6 +127,31 @@
     content: url("../images/playing/squidward-won.png");
 }
 
+#plankton.transition,
+#karen.transition {
+    transition: left 2s, bottom 2s, height 2s;
+}
+
+#plankton.playing {
+    left: calc(14% + 75px);
+}
+
+#plankton.leaving {
+    bottom: calc(100% + 50px);
+}
+#plankton.leaving > img {
+    content: url("../images/playing/plankton-leaving.png");
+    height: 70%;
+}
+
+#plankton.goBack > img {
+    transform: rotateY(180deg);
+}
+
+#karen.playing {
+    left: 14%;
+}
+
 @keyframes jellyfishMove {
     0%  { width: 95%; height: 110%; }
     50%  {  width: 110%; height: 100%; }

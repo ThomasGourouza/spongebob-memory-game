@@ -8,8 +8,6 @@ function playAi(name) {
       return playAiWithMemory(name);
     case "patrick":
       return playAiPatrick();
-    case "karen":
-      return playKaren();
     default:
       return;
   }
@@ -66,13 +64,6 @@ function planktonAndBobStrategy(cards) {
       getRandomCardDifferentFromIn(firstCard, gameMemory) ||
       getRandomCardDifferentFromIn(firstCard, cards),
   };
-}
-
-function playKaren() {
-  const winCards = getWinCardsFrom(getCards());
-  const firstCard = getRandomItem(winCards);
-  const secondCard = getMatchingCardToIn(firstCard, winCards);
-  playAnimation(firstCard, secondCard);
 }
 
 function playAnimation(firstCard, secondCard) {
@@ -133,6 +124,10 @@ function getRandomItem(array) {
 }
 
 function setEndgamePicture(name) {
+  if (name === "plankton") {
+    plankton.classList.add("leaving");
+    return;
+  }
   if (isAIWinner()) {
     getById(name).classList.add("won");
   } else {

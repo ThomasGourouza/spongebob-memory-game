@@ -34,7 +34,7 @@
         <button name="play" id="playBob" onclick="playAgainst('bob')">Play Bob</button>
         <button name="play" id="playPatrick" onclick="playAgainst('patrick')">Play Patrick</button>
         <button name="play" id="playSquidward" onclick="playAgainst('squidward')">Play Squidward</button>
-        <!-- <button name="play" id="playKaren" onclick="playAgainst('karen')">Play Plankton</button> -->
+        <button name="play" id="playPlankton" onclick="playAgainst('plankton')">Play Plankton</button>
     </div>
     <div class="bubbles">
         <div class="bubble"></div>
@@ -69,9 +69,6 @@
         <div id=15 class="square" onclick="showPicture(this)"></div>
         <div id=16 class="square" onclick="showPicture(this)"></div>
     </div>
-    <!-- <div id="karen" class="notHere">
-        <img src="images/playing/karen.png" alt="karen">
-    </div> -->
     <div id="jellyfish" class="notHere">
         <img src="images/playing/jellyfish.png" alt="jellyfish">
     </div>
@@ -84,9 +81,12 @@
     <div id="bob" class="not-dancing">
         <img src="images/not-dancing/bob-not-dancing.png" alt="bob">
     </div>
-    <!-- <div id="plankton" class="not-dancing">
-        <img src="images/not-dancing/plankton-not-dancing.png" alt="plankton">
-    </div> -->
+    <div id="plankton" class="out-left">
+        <img src="images/playing/plankton-playing.png" alt="plankton">
+    </div>
+    <div id="karen" class="out-left">
+        <img src="images/playing/karen.png" alt="karen">
+    </div>
     <script src="scripts/models/ai-info.js"></script>
     <script src="scripts/models/card.js"></script>
     <script src="scripts/models/ai.js"></script>

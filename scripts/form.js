@@ -42,19 +42,26 @@ function playAgainst(name) {
   const currentState = audio.volume === 1 ? "dancing" : "not-dancing";
   if (!aiInfo.character.classList.contains("playing")) {
     aiInfo.runAI(true);
-    jellyfish.className = aiInfo.toCharacter;
-    setTimeout(() => {
-      jellyfish.className = "isHere";
-      aiInfo.character.classList.replace(currentState, "playing");
-      if (name === "bob") {
-        jellyfish.classList.add("withBob");
-        bob.classList.add("invisible");
-        setTimeout(() => {
-          jellyfish.classList.remove("withBob");
-          bob.classList.remove("invisible");
-        }, 700);
-      }
-    }, 1000);
+    if (name !== "plankton") {
+      jellyfish.className = aiInfo.toCharacter;
+      setTimeout(() => {
+        jellyfish.className = "isHere";
+        aiInfo.character.classList.replace(currentState, "playing");
+        if (name === "bob") {
+          jellyfish.classList.add("withBob");
+          bob.classList.add("invisible");
+          setTimeout(() => {
+            jellyfish.classList.remove("withBob");
+            bob.classList.remove("invisible");
+          }, 700);
+        }
+      }, 1000);
+    } else {
+      karen.className = "transition";
+      plankton.className = "transition";
+      karen.classList.add("playing");
+      plankton.classList.add("playing");
+    }
   } else {
     aiInfo.runAI(false);
     if (name === "bob") {
@@ -63,6 +70,14 @@ function playAgainst(name) {
       setTimeout(() => {
         bob.classList.replace("notHere", currentState);
       }, 1000);
+    } else if (name === "plankton") {
+      karen.classList.remove("playing");
+      plankton.classList.remove("transition");
+      plankton.classList.remove("playing");
+      plankton.classList.remove("leaving");
+      setTimeout(() => {
+        karen.classList.remove("transition");
+      }, 2000);
     } else {
       aiInfo.character.classList.replace("playing", currentState);
       jellyfish.className = aiInfo.toCharacter;
@@ -73,10 +88,11 @@ function playAgainst(name) {
         }
       }, 1000);
     }
-
-    setTimeout(() => {
-      jellyfish.className = "notHere";
-    }, 2000);
+    if (name !== "plankton") {
+      setTimeout(() => {
+        jellyfish.className = "notHere";
+      }, 2000);
+    }
   }
 }
 
@@ -136,13 +152,13 @@ function getAIInfo(name) {
         "Play Squidward",
         getById("playSquidward")
       );
-    case "karen":
+    case "plankton":
       return new AIInfo(
         plankton,
         "toPlankton",
-        (value) => setAI("Karen", value),
+        (value) => setAI("Plankton", value),
         "Play Plankton",
-        getById("playKaren")
+        getById("playPlankton")
       );
     default:
       return;
@@ -150,16 +166,9 @@ function getAIInfo(name) {
 }
 
 function getButtonId(name) {
-  switch (name) {
-    case "bob":
-      return "playBob";
-    case "patrick":
-      return "playPatrick";
-    case "squidward":
-      return "playSquidward";
-    default:
-      return undefined;
-  }
+  return getElements("button")
+    .find((button) => button.getAttribute("id").toLowerCase().includes(name))
+    ?.getAttribute("id");
 }
 
 function setAI(name, enabled) {
