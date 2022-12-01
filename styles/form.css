@@ -1,6 +1,23 @@
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 button:disabled {
   cursor: auto;
+}
+
+button {
+  background-color: transparent;
+  border-color: transparent;
+  background-image: url('../images/backgrounds/bubble.png');
+  background-size: cover;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-blend-mode: overlay;
+  background-size: 130%;
+  background-position: center;
 }

@@ -13,7 +13,7 @@ body {
     grid-row-gap: 10px;
     margin-left: calc((100% - (4 * 120px + 3 * 10px)) / 2);
     margin-right: calc((100% - (4 * 100px + 3 * 10px)) / 2);
-    margin-top: 100px;
+    margin-top: calc((100vh - 500px) / 2);
 }
 
 .square {
@@ -101,10 +101,9 @@ body {
     position: absolute;
     top: 0;
     margin-top: 10px;
-    text-align: center;
-
-    width: 50%;
     margin-left: 25%;
+    text-align: center;
+    width: 50%;
 }
 .info {
     position: absolute;

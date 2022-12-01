@@ -19,7 +19,6 @@
     <div class="form">
         <p>Player 1: <input id="player1" type="text" onmouseleave="checkNameEmpty()"></p>
         <p>Player 2: <input id="player2" type="text" onmouseleave="checkNameEmpty()"></p>
-        <button id="newGameVersus" onclick="validatePlayerForm()">New Game</button>
     </div>
     <div class="info">
         <h2 id="playerName"></h2>
@@ -29,12 +28,13 @@
         <audio autoplay loop>
             <source src="songs/theme-song.mp3" type="audio/mpeg">
         </audio>
-        <button name="control" id="audio" onclick="toggleAudio()">Turn music off</button>
-        <button name="control" id="init" onclick="initGame()">New Game</button>
-        <button name="play" id="playBob" onclick="playAgainst('bob')">Play Bob</button>
-        <button name="play" id="playPatrick" onclick="playAgainst('patrick')">Play Patrick</button>
-        <button name="play" id="playSquidward" onclick="playAgainst('squidward')">Play Squidward</button>
-        <button name="play" id="playPlankton" onclick="playAgainst('plankton')">Play Plankton</button>
+        <button name="control" id="audio" onclick="toggleAudio()">Mute</button>
+        <button name="control" id="newGameVersus" onclick="validatePlayerForm()">1 vs. 1</button>
+        <button name="control" id="init" onclick="initGame()">Rematch</button>
+        <button name="play" id="playBob" onclick="playAgainst('bob')">Bob</button>
+        <button name="play" id="playPatrick" onclick="playAgainst('patrick')">Patrick</button>
+        <button name="play" id="playSquidward" onclick="playAgainst('squidward')">Squidward</button>
+        <button name="play" id="playPlankton" onclick="playAgainst('plankton')">Plankton</button>
     </div>
     <div class="bubbles">
         <div class="bubble"></div>

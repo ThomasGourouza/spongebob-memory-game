@@ -17,7 +17,7 @@ function toggleAudio() {
       : character.classList.replace("dancing", "not-dancing");
   });
   audioButton.innerHTML =
-    audio.volume === 1 ? "Turn music off" : "Turn music on";
+    audio.volume === 1 ? "Mute" : "Music";
 }
 
 function validatePlayerForm() {
@@ -101,7 +101,7 @@ function playAgainst(name) {
 function toggleButtons(name, aiInfo) {
   const buttonId = getButtonId(name);
   const currentButton = getById(buttonId);
-  const isAIPlaying = currentButton.innerHTML.includes("Quit");
+  const isAIPlaying = currentButton.innerHTML.includes("1 vs. 1");
   if (!isAIPlaying) {
     // désactive tout 2sec puis remet seulement le joueur courant
     getByName("play")
@@ -118,7 +118,7 @@ function toggleButtons(name, aiInfo) {
   disableButtonsFor2sec(controlButtons);
   // toggle le texte du button
   aiInfo.button.innerHTML =
-    aiInfo.button.innerHTML === aiInfo.text ? "Quit" : aiInfo.text;
+    aiInfo.button.innerHTML === aiInfo.text ? "1 vs. 1" : aiInfo.text;
 }
 
 function disableButtonsFor2sec(buttons) {
@@ -135,7 +135,7 @@ function getAIInfo(name) {
         bob,
         "toBob",
         (value) => setAI("Bob", value),
-        "Play Bob",
+        "Bob",
         getById("playBob")
       );
     case "patrick":
@@ -143,7 +143,7 @@ function getAIInfo(name) {
         patrick,
         "toPatrick",
         (value) => setAI("Patrick", value),
-        "Play Patrick",
+        "Patrick",
         getById("playPatrick")
       );
     case "squidward":
@@ -151,7 +151,7 @@ function getAIInfo(name) {
         squidward,
         "toSquidward",
         (value) => setAI("Squidward", value),
-        "Play Squidward",
+        "Squidward",
         getById("playSquidward")
       );
     case "plankton":
@@ -159,7 +159,7 @@ function getAIInfo(name) {
         plankton,
         "toPlankton",
         (value) => setAI("Plankton", value),
-        "Play Plankton",
+        "Plankton",
         getById("playPlankton")
       );
     default:
