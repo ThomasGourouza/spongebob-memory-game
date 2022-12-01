@@ -93,12 +93,16 @@ function initGame() {
 function checkNameEmpty() {
   const name1 = getById("player1").value;
   const name2 = getById("player2").value;
-  getById("newGameVersus").disabled = [name1, name2].includes("") || ai.enabled;
+  getById("newGameVersus").disabled = [name1, name2].includes("");
 }
 
 function setCurrentPlayerName(name) {
   currentPlayer = name;
   player.innerHTML = `${currentPlayer} is playing.`;
+  if (!ai.enabled) {
+    player2.name = "Tom";
+  }
+  getById("player2").value = player2.name;
 }
 function printScore() {
   score.innerHTML = `${player1.name}: ${player1.score} | ${player2.name}: ${player2.score}`;

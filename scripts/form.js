@@ -29,7 +29,18 @@ function validatePlayerForm() {
   player1.name = name1;
   player2.name = name2;
   setCurrentPlayerName(player1.name);
-  printScore();
+  ai.enabled ? playAgainst(ai.name) : initGame();
+}
+
+function rematch() {
+  const name1 = getById("player1").value;
+  const name2 = getById("player2").value;
+  if (name1 !== "") {
+    player1.name = name1;
+  }
+  if (name2 !== "" && !ai.enabled) {
+    player2.name = name2;
+  }
   initGame();
 }
 
@@ -38,7 +49,7 @@ function playAgainst(name) {
     return;
   }
   const aiInfo = getAIInfo(name);
-  toggleButtons(name, aiInfo);
+  toggleButtons();
   const currentState = audio.volume === 1 ? "dancing" : "not-dancing";
   if (!aiInfo.character.classList.contains("playing")) {
     aiInfo.runAI(true);
@@ -98,27 +109,20 @@ function playAgainst(name) {
   }
 }
 
-function toggleButtons(name, aiInfo) {
-  const buttonId = getButtonId(name);
-  const currentButton = getById(buttonId);
-  const isAIPlaying = currentButton.innerHTML.includes("1 vs. 1");
+function toggleButtons() {
+  const isAIPlaying = ai.enabled;
+  const playButtons = getByName("play");
   if (!isAIPlaying) {
-    // désactive tout 2sec puis remet seulement le joueur courant
-    getByName("play")
-      .filter((button) => button.getAttribute("id") !== buttonId)
-      .forEach((button) => (button.disabled = !isAIPlaying));
-    disableButtonsFor2sec([currentButton]);
+    // désactive tout les boutons "player"
+    playButtons
+      .forEach((button) => (button.disabled = true));
   } else {
     // désactive tout 2sec puis remet tout
-    const playButtons = getByName("play");
     disableButtonsFor2sec(playButtons);
   }
   // désactive les controls pendant 2sec
   const controlButtons = getByName("control");
   disableButtonsFor2sec(controlButtons);
-  // toggle le texte du button
-  aiInfo.button.innerHTML =
-    aiInfo.button.innerHTML === aiInfo.text ? "1 vs. 1" : aiInfo.text;
 }
 
 function disableButtonsFor2sec(buttons) {
@@ -176,7 +180,9 @@ function getButtonId(name) {
 function setAI(name, enabled) {
   ai.name = name.toLowerCase();
   ai.enabled = enabled;
-  player2.name = ai.enabled ? name : "Tom";
-  player2.score = 0;
+  if (ai.enabled) {
+    player2.name = name;
+    player2.score = 0;
+  }
   initGame();
 }

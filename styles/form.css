@@ -16,8 +16,12 @@ button {
   border-radius: 50%;
 }
 
-button:hover {
+button:not(:disabled):hover {
   background-blend-mode: overlay;
   background-size: 130%;
   background-position: center;
+}
+
+button:active {
+  background-color: skyblue;
 }
