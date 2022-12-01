@@ -3,6 +3,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 .board {
