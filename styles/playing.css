@@ -132,15 +132,21 @@
     transition: left 2s, bottom 2s, height 2s;
 }
 #bubblePlankton.transition {
-    transition: bottom 1s;
+    transition: bottom 2s;
 }
 
 #plankton.playing {
     left: calc(14% + 75px);
 }
-
+#karen.playing {
+    left: 14%;
+}
+#plankton.playing > img {
+    animation: planktonMove 1s linear infinite;
+}
 #plankton.leaving {
-    bottom: calc(100% + 50px);
+    transition: bottom 7s;
+    bottom: calc(100% + 100px);
 }
 #plankton.leaving > img {
     content: url("../images/playing/plankton-leaving.png");
@@ -151,10 +157,6 @@
     transform: rotateY(180deg);
 }
 
-#karen.playing {
-    left: 14%;
-}
-
 #bubblePlankton.coming {
     bottom: calc(10% + 390px);
 }
@@ -163,6 +165,12 @@
     0%  { width: 95%; height: 110%; }
     50%  {  width: 110%; height: 100%; }
     100%  { width: 95%; height: 110%; }
+}
+
+@keyframes planktonMove {
+    0%  { transform: rotate(10deg); }
+    50%  {  transform: rotate(-5deg); }
+    100%  { transform: rotate(10deg); }
 }
 
 @keyframes playerMove {

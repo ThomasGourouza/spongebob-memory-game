@@ -131,7 +131,7 @@ function setEndgamePicture(name) {
       bubblePlankton.classList.remove("transition");
       bubblePlankton.classList.remove("coming");
       plankton.classList.add("leaving");
-    }, 1000);
+    }, 2000);
     return;
   }
   if (isAIWinner()) {

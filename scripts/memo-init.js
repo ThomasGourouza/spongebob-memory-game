@@ -18,16 +18,27 @@ const player1 = new Player(player1Name);
 const player2 = new Player(player2Name);
 const ai = new Ai();
 const characters = [
-  "bob",
-  "squidward",
-  "gary",
-  "krabs",
-  "patrick",
-  "pearl",
-  "plankton",
-  "puff",
-  "sandy",
+  "a",
+  "a",
+  "a",
+  "a",
+  "a",
+  "a",
+  "a",
+  "a",
+  "a",
 ];
+// const characters = [
+//   "bob",
+//   "squidward",
+//   "gary",
+//   "krabs",
+//   "patrick",
+//   "pearl",
+//   "plankton",
+//   "puff",
+//   "sandy",
+// ];
 
 /**
  * Variables
