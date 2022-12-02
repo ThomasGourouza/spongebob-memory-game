@@ -18,6 +18,11 @@ function toggleAudio() {
   });
 }
 
+function versus() {
+  ai.versus = true;
+  validatePlayerForm();
+}
+
 function validatePlayerForm() {
   const name1 = getById("player1").value;
   const name2 = getById("player2").value;

@@ -13,8 +13,8 @@ body {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     margin-left: calc((100% - (4 * 120px + 3 * 10px)) / 2);
-    margin-right: calc((100% - (4 * 100px + 3 * 10px)) / 2);
-    margin-top: calc((100vh - 500px) / 2);
+    margin-right: calc((100% - (4 * 120px + 3 * 10px)) / 2);
+    margin-top: calc((100vh - 450px) / 2);
 }
 
 .square {

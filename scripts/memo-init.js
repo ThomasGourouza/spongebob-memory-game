@@ -101,8 +101,12 @@ function checkNameEmpty() {
 function setCurrentPlayerName(name) {
   currentPlayer = name;
   player.innerHTML = `${currentPlayer} is playing.`;
-  if (!ai.enabled && !ai.changed ) {
+  if (
+    ai.versus &&
+    ["Patrick", "Bob", "Squidward", "Plankton"].includes(player2.name)
+  ) {
     player2.name = "Tom";
+    ai.versus = false;
   }
   getById("player2").value = player2.name;
 }
@@ -115,7 +119,7 @@ function removeEndGame() {
   patrick.classList.remove("lost");
   squidward.classList.remove("lost");
   squidward.classList.remove("won");
-  if(ai.enabled) {
+  if (ai.enabled) {
     plankton.classList.remove("leaving");
   }
 }

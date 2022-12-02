@@ -3,5 +3,6 @@ class Ai {
     this.name = undefined;
     this.enabled = false;
     this.changed = false;
+    this.versus = false;
   }
 }
