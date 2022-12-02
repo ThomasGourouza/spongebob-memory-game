@@ -11,8 +11,10 @@ toggleAudio();
  */
 function toggleAudio() {
   audio.volume = audio.volume === 1 ? 0 : 1;
+  const isMusicOn = audio.volume === 1;
+  audioButton.setAttribute("title", isMusicOn ? "Stop music" : "Start music");
   [bob, patrick, squidward].forEach((character) => {
-    audio.volume === 1
+    isMusicOn
       ? character.classList.replace("not-dancing", "dancing")
       : character.classList.replace("dancing", "not-dancing");
   });
