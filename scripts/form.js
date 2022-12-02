@@ -31,6 +31,9 @@ function validatePlayerForm() {
   }
   player1.name = name1;
   player2.name = name2;
+  if (!["Patrick", "Bob", "Squidward", "Plankton"].includes(player2.name)) {
+    ai.playerName = player2.name;
+  }
   setCurrentPlayerName(player1.name);
   ai.enabled ? playAgainstNewOpponent(ai.name) : initGame();
 }

@@ -101,11 +101,10 @@ function checkNameEmpty() {
 function setCurrentPlayerName(name) {
   currentPlayer = name;
   player.innerHTML = `${currentPlayer} is playing.`;
-  if (
-    ai.versus &&
-    ["Patrick", "Bob", "Squidward", "Plankton"].includes(player2.name)
-  ) {
-    player2.name = "Tom";
+  if (ai.versus) {
+    if (["Patrick", "Bob", "Squidward", "Plankton"].includes(player2.name)){
+      player2.name = ai.playerName;
+    }
     ai.versus = false;
   }
   getById("player2").value = player2.name;
