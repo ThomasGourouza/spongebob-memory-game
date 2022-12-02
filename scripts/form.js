@@ -97,10 +97,11 @@ function comeToPlay(name, aiInfo, currentState) {
       jellyfish.className = "isHere";
       aiInfo.character.classList.replace(currentState, "playing");
       if (name === "bob") {
-        jellyfish.classList.add("withBob");
+        jellyfish.classList.replace("isHere", "isHereWithBob");
         bob.classList.add("invisible");
         setTimeout(() => {
           jellyfish.classList.remove("withBob");
+          jellyfish.classList.replace("isHereWithBob", "isHere");
           bob.classList.remove("invisible");
         }, 700);
       }

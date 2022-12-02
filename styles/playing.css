@@ -35,7 +35,12 @@
     transition: left 1s, top 1s, height 1s;
     z-index: -5;
 }
-#jellyfish.isHere.withBob {
+#jellyfish.isHereWithBob {
+    left: 14%;
+    top: 310px;
+    height: 300px;
+    transition: left 1s, top 1s, height 1s;
+    z-index: -5;
     animation: withBob 0.7s normal;
 }
 #jellyfish.goAway {
@@ -57,6 +62,8 @@
 }
 #jellyfish > img {
     height: 100%;
+}
+#jellyfish.isHere > img {
     animation: jellyfishMove 3s linear infinite;
 }
 
